@@ -44,6 +44,11 @@
 
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <script defer>
+        $(document).ready(() => {
+            $('#loader').addClass('d-none'); $('body').removeClass('overflow-hidden');
+        })
+    </script>
     <style>
         .h-fit-content {
             height: fit-content;
@@ -51,7 +56,7 @@
     </style>
 </head>
 
-<body>
+<body class="overflow-hidden">
     <header style="z-index: 10" class="d-flex w-100 justify-content-evenly p-3 position-fixed visually-hidden">
         <img src="./banner.jpg" style="height: 5em" alt="">
         <nav>
@@ -106,8 +111,14 @@
             </ul>
         </nav>
     </header>
-    <section>
-
+    <div id="loader" style="width: 100vw; height: 100vh; z-index: -1;"
+        class="top-0 d-flex justify-content-center align-items-center position-absolute bg-white">
+        <img src="http://127.0.0.1/negosud/d3f472b06590a25cb4372ff289d81711_w200.gif" alt="">
+    </div>
+    <section class="h-100 d-flex justify-content-center align-items-center">
+        <div>
+            <img src="" alt="">
+        </div>
     </section>
 </body>
 
