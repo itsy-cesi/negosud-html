@@ -33,6 +33,48 @@
         href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.css'
         integrity='sha512-03p8fFZpOREY+YEQKSxxretkFih/D3AVX5Uw16CAaJRg14x9WOF18ZGYUnEqIpIqjxxgLlKgIB2kKIjiOD6++w=='
         crossorigin='anonymous' />
+
+    <script defer>
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            var documentHeight = $(document).height();
+            console.log(scroll + "/" + windowHeight);
+
+            if (scroll > windowHeight && scroll < windowHeight * 2) {
+                $('header a').addClass('link-light');
+            } else {
+                $('header a').removeClass('link-light');
+            }
+        });
+    </script>
+    <style>
+        *[name="cepage_show"] {
+            transition: 0.5s;
+        }
+
+        *[name="cepage_show"]:hover {
+            flex: 2 !important;
+        }
+
+        *[name="cepage_show"] div:last-of-type {
+            transition: 0.5s;
+        }
+
+        *[name="cepage_show"]:hover div:last-of-type {
+            margin-bottom: 2em;
+        }
+
+        @media only screen and (max-width: 1200px) {
+            *[name="cepage_show"] {
+                flex: 50% !important;
+            }
+
+            *[name="history"]>*:has(img) {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body style="overflow-x: hidden;">
@@ -41,13 +83,10 @@
         <nav>
             <ul style="list-style: none; display:flex;">
                 <li>
-                    <a href="#" class="p-3 nav-link">Home</a>
+                    <a href="http://127.0.0.1/negosud" class="p-3 nav-link">Home</a>
                 </li>
                 <li>
-                    <a href="#" class="p-3 nav-link">About</a>
-                </li>
-                <li>
-                    <a href="#" class="p-3 nav-link">Products</a>
+                    <a href="http://127.0.0.1/negosud/products" class="p-3 nav-link">Products</a>
                 </li>
                 <li>
                     <a href="#" class="p-3 nav-link">Contact</a>
@@ -77,8 +116,8 @@
     </section>
     <section style="background-color: #1b1b1b"
         class="vw-100 vh-100 d-flex justify-content-center align-items-center position-relative shadow">
-        <div class="text-white w-75 d-flex align-items-center">
-            <div class="p-3">
+        <div class="text-white w-75 d-flex flex-wrap align-items-center" name="history">
+            <div class="p-3" style="flex: 1;">
                 <h1 style="font-family: math;">Qui somme nous ?</h1>
                 <div class="row">
                     <div class="" style="font-family: math;">
@@ -108,15 +147,15 @@
                     </div>
                 </div>
             </div>
-            <div class="p-3 col-6">
-                <img class="w-75" src="./xqhs7k1tusvdohhgagmq.jpg" alt="">
+            <div class="p-3 col-6" style="flex: 1;">
+                <img class="w-75 mx-auto" src="./xqhs7k1tusvdohhgagmq.jpg" alt="">
             </div>
         </div>
     </section>
-    <section class="vw-100 vh-100 d-flex justify-content-center align-items-center position-relative flex-column">
+    <section class="vw-100 vh-100 d-flex p-3 justify-content-center align-items-center position-relative flex-column">
         <h3 class="p-4">Cépages</h3>
-        <div class="d-flex w-75 h-50">
-            <div style="flex: 1;" name="cepage_show"
+        <div class="d-flex flex-wrap w-75 h-50">
+            <div style="flex: 1; min-width: 225px;" name="cepage_show"
                 class="position-relative h-100 overflow-hidden d-flex justify-content-end align-items-center flex-column">
                 <div class="w-100 h-100 position-absolute top-50 start-50 translate-middle"
                     style="z-index: -1; background-image: url('./xqhs7k1tusvdohhgagmq.jpg'); background-size: cover; background-position: center;">
@@ -127,7 +166,7 @@
                     <hr class="mt-1 border-top border-3 w-50" style="border-color: #000">
                 </div>
             </div>
-            <div style="flex: 1;" name="cepage_show"
+            <div style="flex: 1; min-width: 225px;" name="cepage_show"
                 class="position-relative h-100 overflow-hidden d-flex justify-content-end align-items-center flex-column">
                 <div class="w-100 h-100 position-absolute top-50 start-50 translate-middle"
                     style="z-index: -1; background-image: url('./istockphoto-1034835628-612x612.jpg'); background-size: cover; background-position: center;">
@@ -138,7 +177,7 @@
                     <hr class="mt-1 border-top border-3 w-50" style="border-color: #000">
                 </div>
             </div>
-            <div style="flex: 1;" name="cepage_show"
+            <div style="flex: 1; min-width: 225px;" name="cepage_show"
                 class="position-relative h-100 overflow-hidden d-flex justify-content-end align-items-center flex-column">
                 <div class="w-100 h-100 position-absolute top-50 start-50 translate-middle"
                     style="z-index: -1; background-image: url('./istockphoto-1281018997-612x612.jpg'); background-size: cover; background-position: center;">
@@ -149,7 +188,7 @@
                     <hr class="mt-1 border-top border-3 w-50" style="border-color: #000">
                 </div>
             </div>
-            <div style="flex: 1;" name="cepage_show"
+            <div style="flex: 1; min-width: 225px;" name="cepage_show"
                 class="position-relative h-100 overflow-hidden d-flex justify-content-end align-items-center flex-column">
                 <div class="w-100 h-100 position-absolute top-50 start-50 translate-middle"
                     style="z-index: -1; background-image: url('./stock-photo-cognac-glass-bottle-luxury-alcohol.jfif'); background-size: cover; background-position: center;">
