@@ -74,66 +74,91 @@
     </style>
 
     <script defer>
-        const regionList = ["Ain", "Aisne", "Allier", "Alpes-de-Haute-Provence", "Hautes-Alpes", "Alpes-Maritimes", "Ardèche", "Ardennes", "Ariège", "Aube", "Aude", "Aveyron", "Bouches-du-Rhône", "Calvados", "Cantal", "Charente", "Charente-Maritime", "Cher", "Corrèze", "Corse-du-Sud", "Haute-Corse", "Côte-d'Or", "Côtes d'Armor", "Creuse", "Dordogne", "Doubs", "Drôme", "Eure", "Eure-et-Loir", "Finistère", "Gars", "Haute-Garonne", "Gers", "Gironde", "Hérault", "Ille-et-Vilaine", "Indre", "Indre-et-Loire", "Isère", "Jura", "Landes", "Loir-et-Cher", "Loire", "Haute-Loire", "Loire-Atlantique", "Loiret", "Lot", "Lot-et-Garonne", "Lozère", "Maine-et-Loire", "Manche", "Marne", "Haute-Marne", "Mayenne", "Meurthe-et-Moselle", "Meuse", "Morbihan", "Moselle", "Nièvre", "Nord", "Oise", "Orne", "Pas-de-Calais", "Puy-de-Dôme", "Pyrénées-Atlantiques", "Hautes-Pyrénées", "Pyrénées-Orientales", "Bas-Rhin", "Haut-Rhin", "Rhône", "Haute-Saône", "Saône-et-Loire", "Sarthe", "Savoie", "Haute-Savoie", "Paris", "Seine-Maritime", "Seine-et-Marne", "Yvelines", "Deux-Sèvres", "Somme", "Tarn", "Tarn-et-Garonne", "Var", "Vaucluse", "Vandée", "Vienne", "Haute-Vienne", "Vosges", "Yonne", "Territoire de Belfort", "Essonne", "Hauts-de-Seine", "Seine-St-Denis", "Val-de-Marne", "Val-D'Oise", "Guadeloupe", "Martinique", "Guyane", "La Réunion", "Mayotte"];
-        const producerList = ["Des Bouteilles À-L-AMÈRE", "Laura AILLAUD", "Les Grangeons de l' ALBARINE", "Domaine ALÉOFANE", "Thierry ALLEMAND", "Domaine Pierre ANDRÉ", "Domaine des 2 ANES", "APHROS", "Antoine ARENA", "Antoine-Marie ARENA", "Jean-Baptiste ARENA", "Clos Puy ARNAUD", "Domaine de l' ASTRÉ", "Les Vignes de l' ATRIE", "Sylvie AUGEREAU", "Folias de BACO", "Elodie BALME", "Franck BALTHAZAR", "Clément BARAUT", "Château BAROUILLET", "Domaine Léon BARRAL", "Vignoble Paul BARRE", "Romain Le BARS", "Raphaël BARTUCCI", "Judith BECK", "Domaine BEDOUET", "Maison en BELLES-LIES", "Domaine de BELLIVIÈRE", "Dominique BELLUARD", "Azienda Vittorio E Figli BERA", "Les BERTRAND", "Château de BÉRU", "Domaine Mouthes Le BIHAN", "Christian BINNER", "Sébastien BOBINET", "Sylvain BOCK", "Domaine BONNET-COTTON", "Clos de la BONNETTE", "Domaine BORDATTO", "Domaine BORNARD", "Domaine de BOTHELAND", "Kevin BOUILLET", "Château BRANDEAU", "Domaine BRETON", "Le Clos de la BRUYÈRE", "Domaine des BUIS", "CA-BOIT-LIBRE", "Les vins de la CADETTE", "CALCARIUS", "Andréa CALEK", "Domaine la CALMETTE", "Toni CARBO", "La CAVE-DU-BUIZIN", "Didier CHAFFARDON", "Thomas CHANY", "Patrice COLIN", "Château La COLOMBIÈRE", "Hautes Terres de COMBEROUSSE", "Domaine COMPLÉMEN'TERRE", "Clos CONSTANTIN", "Domaine COQUELICOT", "Ferme de PORT COUSTIC", "Mas COUTELOU", "Domaine de la CRAS", "Domaine CRUCHANDEAU", "Domaine CURTET", "Domaine DANDELION", "Jean-François DEBOURG", "DENAVOLO", "Domaine DERAIN", "Léo DIRRINGER", "Champagne Didier DOUÉ", "Champagne DRAPPIER", "Thibault DUCROUX", "Champagne Julie DUFOUR", "Charles DUFOUR", "Domaine François DUMAS", "Mas d'AGALIS", "Domaine de l' ÉCU", "Domaine les EMINADES", "Domaine Ludovic ENGELVIN", "ENVINATE", "Clos FANTINE", "Emilien FENEUIL", "Jean FOILLARD", "FONTERENZA", "Azienda agricola Elisabetta FORADORI", "Mas FOULAQUIER", "Château la FRANCHAIE", "Domaine des FRÈRES", "Domaine PIERRE FRICK", "Cantina FURLANI", "Champagne Francis BOULARD et Fille", "Champagne LAHERTE Frères", "Anne et Jean-François GANEVAT", "Jean-François GANEVAT", "Vincent GAUDRY", "Domaine GIACHINO", "Domaine Philippe GILBERT", "Domaine GIUDICELLI", "France GONZALVEZ", "Domaine GRAMENON", "Domaine de la GRAPPERIE", "Grain par Grain", "Maison HÉROUT", "Domaine HORS-CIEL", "Domaine HOUILLON", "Domaine ILARRIA", "Domaine de L ISERAND", "Domaine Jérôme JOURET", "Domaine L'ILE-ROUGE", "Domaine LANDRON", "Jean-Claude LAPALU", "Domaine Marcel LAPIERRE", "Camin LARREDYA", "Champagne Jacques LASSAIGNE", "Maxime-François LAURENT", "Domaine LEDOGAR", "Cidrerie du LÉGUER", "Cidre LEMASSON", "Fiona LEROY", "Richard LEROY", "Château LESTIGNAC", "Domaine Antoine LIENHARDT", "Christophe LINDELAUB", "La Ferme des 7 LUNES", "Les Vignes de l'ANGEVIN", "Domaine de l'OCTAVIN", "Bertrand et Axelle MACHARD-de-GRAMONT", "Maxime MAGNON", "Cosse et MAISONNEUVE", "LUCY MARGAUX", "Domaine Antoine MAROIS", "Clos MASSOTTE", "Domaine MATASSA", "Jean MAX", "Clos des Vignes du MAYNES", "Mas MELLET", "Château de MERANDE", "Jules MÉTRAS", "Yvon MÉTRAS", "Domaine Julien MEYER", "Château MEYLET", "Champagne Les Frères MIGNON", "Domaine MIOLANNE", "Domaine de MIREBEAU", "Domaine aux MOINES", "Ferme de BOIS MOISSET", "Domaine Le Bout du MONDE", "Domaine De MOOR", "Noëlla MORANTIN", "Domaine MOREL", "Domaine MOSSE", "MOURESSIPE", "Vandal-Wine / NADA", "Guillaume NOIRE", "Azienda Arianna OCCHIPINTI", "GUT OGGAU", "OPI-D'AQUI", "André OSTERTAG", "Maison Emmanuel Houillon et Pierre OVERNOY", "Philippe PACALET", "Domaine PADIÉ", "Domaine La PAONNERIE", "Les Cailloux du PARADIS", "PARTIDA-CREUS", "Domaine des PASSAGES", "Valentina PASSALACQUA", "Domaine PATTES-LOUP", "PEIRA-LEVADA", "Le Mas de Mon PÈRE", "Mas del PÉRIÉ", "La PETITE-BAIGNEUSE", "Domaine de la PETITE-SOEUR", "Domaine PLAGEOLES", "Clos des PLANTES", "Le Raisin à PLUME", "La PORTE-SAINT-JEAN", "Domaine du POSSIBLE", "Domaine Claus PREISINGER", "Thomas PUECHAVY", "Vignobles PUEYO", "Château le PUY", "Pepe RAVENTOS", "Vignoble RÉVEILLE", "Marcel RICHAUD", "Catherine RISS", "Domaine ROBERT-Denogent", "ROC-des-ANGES", "Domaine ROLS", "Elian Da ROS", "ROUCAS-TOUMBA", "Christian ROUCHIER", "Les Bottes ROUGES", "Domaine des ROUGES-QUEUES", "Fanny SABRE", "Domaine La Ferme SAINT-MARTIN", "Château SAINTE-ANNE", "Ferme de la SANSONNIÈRE", "La Graine SAUVAGE", "Rémi SÉDÈS", "Jean-Baptiste SENAT", "Domaine de la SÉNÉCHALIÈRE", "Vignoble de La Coulée de SERRANT", "SEXTANT", "Domaine SICUS", "Vinyes SINGULARS", "Hervé SOUHAUT", "Les Frères SOULIER", "La SOURCE-du-RUAULT", "Maison STEPHAN", "Thibault STEPHAN", "Domaine Benjamin TAILLANDIER", "Le TEMPS-des-CERISES", "Louis TERRAL", "Un Coin sur TERRE", "TERRE-de-L'ÉLU", "TERRE-des-DAMES", "Les TERRES-BLEUES", "Les TERRES-PROMISES", "TERRES-des-NUS", "Jean Paul et Charly THÉVENET", "Domaine THILLARDON", "Domaine Julien THUREL", "Domaine Julien THUREL", "Domaine de la Grange TIPHAINE", "Château TIRE-PÉ", "Domaine Stéphane TISSOT", "Le Clos des TREILLES", "Clos du TUE-BOEUF", "Domaine TURENNE", "Domaine U-STILICCIONU", "Champagne VAL'FRISON", "Maison VALETTE", "Domaine des VIGNEAUX", "Domaine VILLEMADE", "Domaine VINCENDEAU", "VOUETTE-et-SORBÉE", "Cidrerie du VULCAIN", "WA-SUD", "Grégory WHITE", "Ferme de l' YONNIÈRE", "Domaine YOYO"]
         const listImage = ["6K4A0477_533x.jpg", "6K4A0483_533x.jpg", "6K4A0496_533x.jpg", "6K4A0507_533x.jpg", "6K4A0516_533x.jpg", "6K4A0534_533x.jpg", "6K4A0570_533x.jpg", "6K4A0814_533x.jpg", "6K4A0478_533x.jpg", "6K4A0489_533x.jpg", "6K4A0504_533x.jpg", "6K4A0513_533x.jpg", "6K4A0522_533x.jpg", "6K4A0536_533x.jpg", "6K4A0572_533x.jpg", "6K4A0829_533x.jpg", "6K4A0480_533x.jpg", "6K4A0493_533x.jpg", "6K4A0506_533x.jpg", "6K4A0514_533x.jpg", "6K4A0530_533x.jpg", "6K4A0550_533x.jpg", "6K4A0578_533x.jpg", "AmberBottleShop_ToutBu_Bottleneck_Fort_SOL_byTiesBemelmans-64copy_533x.jpg"]
 
-        class Product {
-            constructor(arg) {
-                this.region = arg[0];
-                this.producer = arg[1];
-                this.price = arg[2];
-                this.id = arg[3];
-                this.image = 'http://127.0.0.1/negosud/wines/' + arg[4];
-                this.name = arg[5];
-            }
+        async function getProducts() {
+            await $.post('http://127.0.0.1/negosud/api/Produits.php', function (response) {
+                const products = (response);
+                $('div[name="products"]').html();
+                products.forEach((product) => {
+                    const item = `
+                    <div class="col-lg-3 col-md-6 h-fit-content">
+                        <div class="single-product position-relative">
+                            <input type="hidden" name="region" value="${product.region}">
+                            <input type="hidden" name="producer" value="${product.producteur}">
+                            <input type="hidden" name="price" value="${product.prix_unitaire}">
+                            <input type="hidden" name="id" value="${product.id}">
+                            <img class="img-fluid w-100" src="http://127.0.0.1/negosud/wines/${listImage[Math.floor(Math.random() * listImage.length)]}" alt="">
+                            <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
+                                <div>
+                                    <h5>${product.nomProduit}</h5>
+                                    <div class="price">
+                                        <h6>${product.prix_unitaire}€</h6>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-end">
+                                    <a name="buy-it" id="buy-it" class="p-2 btn btn-outline-primary" role="button">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                    $('div[name="products"]').append(item);
+                })
+            });
         }
-
-        listProduct = [...Array(35).keys()].map(function (a) {
-            return new Product([
-                regionList[Math.floor(Math.random() * regionList.length)],
-                producerList[Math.floor(Math.random() * producerList.length)],
-                (Math.floor(Math.random() * 35) + 1),
-                a,
-                listImage[Math.floor(Math.random() * listImage.length)],
-                'Wine'
-            ])
-        })
-        console.log(listProduct);
-        $(document).ready(() => {
-            producerList.forEach((producer) => {
-                const item = `<div class="form-check"><input class="form-check-input" type="checkbox" id="${producer}" name="producer" value="${producer}"><label for="${producer}" class="form-check-label">${producer}</label></div>`
-                $('div[name="producerList"]').append(item);
-            })
+        function getRegion() {
+            const regionList = [...new Set($('input[name="region"]').map(function () { return $(this).val() }).get())];
             regionList.forEach((region) => {
                 const item = `<div class="form-check"><input class="form-check-input" type="checkbox" id="${region}" name="region" value="${region}"><label for="${region}" class="form-check-label">${region}</label></div>`
                 $('div[name="regionList"]').append(item);
             })
-            listProduct.forEach((product) => {
-                const item = `<div class="col-lg-3 col-md-6 h-fit-content">
-                <div class="single-product position-relative">
-                    <input type="hidden" name="region" value="${product.region}">
-                    <input type="hidden" name="producer" value="${product.producer}">
-                    <input type="hidden" name="price" value="${product.price}">
-                    <input type="hidden" name="id" value="${product.id}">
-                    <img class="img-fluid w-100" src="${product.image}" alt="">
-                    <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
-                        <div>
-                            <h5>${product.name}</h5>
-                            <div class="price">
-                                <h6>${product.price}€</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-end">
-                            <a name="buy-it" id="buy-it" class="p-2 btn btn-outline-primary" role="button">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>`
-                $('div[name="products"]').append(item);
+        }
+        function getProducer() {
+            const producerList = [...new Set($('input[name="producer"]').map(function () { return $(this).val() }).get())];
+            producerList.forEach((producer) => {
+                const item = `<div class="form-check"><input class="form-check-input" type="checkbox" id="${producer}" name="producer" value="${producer}"><label for="${producer}" class="form-check-label">${producer}</label></div>`
+                $('div[name="producerList"]').append(item);
             })
+        }
+        function filter() {
+            const regions = $('input[name="region"]:checked').map(function () { return $(this).val() }).get();
+            const producers = $('input[name="producer"]:checked').map(function () { return $(this).val() }).get();
+            $('.single-product').each(function () {
+                $(this).parent().removeClass('d-none');
+
+                const price = parseInt($(this).find('.price h6').html());
+
+                const priceMin = $('#priceFilter .min').html()
+                const priceMax = $('#priceFilter .max').html()
+
+
+
+
+                const filters = [
+                    (regions.length != 0 && !regions.includes($(this).find('input[name="region"]').attr('value'))),
+                    (producers.length != 0 && !producers.includes($(this).find('input[name="producer"]').attr('value'))),
+                    (price < priceMin || price > priceMax)
+                ]
+
+
+                if (!filters.every(element => element === false)) {
+                    $(this).parent().addClass('d-none');
+                }
+            });
+        }
+        async function makePage() {
+            await getProducts();
+            await getRegion();
+            await getProducer();
+        }
+
+        makePage();
+
+        $(document).ready(() => {
+
             $('#search-producer').keyup(function () {
                 const search = $(this).val().toLowerCase();
 
@@ -150,9 +175,13 @@
                 $($('#search-region + div div input').filter(function (index) { return !this.id.toLowerCase().match(search) })).parent().addClass('d-none')
             })
 
-            $('input[name="region"]').click(() => { filter() });
-            $('input[name="producer"]').click(() => { filter() });
-
+            $(document).on('click', 'input[name="region"]', () => { filter() });
+            $(document).on('click', 'input[name="producer"]', () => { filter() });
+            $(document).on('click', '.single-product', (e) => {
+                e.preventDefault();
+                const target = e.currentTarget;
+                document.location = ('http://127.0.0.1/negosud/product/' + $(target).find('input[name="id"]').val() + '.php');
+            })
             const priceArray = $('.price h6').map(function () { return parseFloat($(this).html()) }).get();
             const minPrice = Math.floor(Math.min(...priceArray))
             const maxPrice = Math.ceil(Math.max(...priceArray))
@@ -172,33 +201,6 @@
             $('#priceFilter .min').html(minPrice);
             $('#priceFilter .max').html(maxPrice);
         })
-
-        function filter() {
-            const regions = $('input[name="region"]:checked').map(function () { return $(this).val() }).get();
-            const producers = $('input[name="producer"]:checked').map(function () { return $(this).val() }).get();
-            $('.single-product').each(function () {
-                $(this).parent().removeClass('d-none');
-
-                const price = parseInt($(this).find('.price h6').html());
-
-                const priceMin = $('#priceFilter .min').html()
-                const priceMax = $('#priceFilter .max').html()
-
-                console.log('Min: ' + priceMin);
-                console.log('Max: ' + priceMax);
-
-                const filters = [
-                    (regions.length != 0 && !regions.includes($(this).find('input[name="region"]').attr('value'))),
-                    (producers.length != 0 && !producers.includes($(this).find('input[name="producer"]').attr('value'))),
-                    (price < priceMin || price > priceMax)
-                ]
-                console.log(filters);
-
-                if (!filters.every(element => element === false)) {
-                    $(this).parent().addClass('d-none');
-                }
-            });
-        }
     </script>
 </head>
 
@@ -257,99 +259,6 @@
             </ul>
         </nav>
     </header>
-    <!-- <div class="h-100 vw-100 p-5 mx-auto align-items-center">
-        <h5 class="w-100 text-center">Our suggestion</h5>
-        <ul class="p-0 d-flex flex-wrap mx-auto" style="width: 75%;" name="suggestion">
-            <li class="m-1 p-3 position-relative d-flex justify-content-end flex-column overflow-hidden ratio ratio-1x1"
-                style="flex:20%; max-width: 50vh;">
-                <img src="./wines/6K4A0477_533x.jpg" style="z-index: -1;" class="ratio ratio-1x1 position-absolute"
-                    alt="">
-                <div class="w-100 p-3 d-flex justify-content-end flex-column" name="product-description">
-                    <div class="p-2">
-                        <h5>Wine</h5>
-                        <p class="text-muted">Lorem ipsum doloris empire nomes wind altis no filliache</p>
-                    </div>
-                </div>
-            </li>
-            <li class="m-1 p-3 position-relative d-flex justify-content-end flex-column overflow-hidden ratio ratio-1x1"
-                style="flex:20%; max-width: 50vh;">
-                <img src="./wines/6K4A0477_533x.jpg" style="z-index: -1;" class="ratio ratio-1x1 position-absolute"
-                    alt="">
-                <div class="w-100 p-3 d-flex justify-content-end flex-column" name="product-description">
-                    <div class="p-2">
-                        <h5>Wine</h5>
-                        <p class="text-muted">Lorem ipsum doloris empire nomes wind altis no filliache</p>
-                    </div>
-                </div>
-            </li>
-            <li class="m-1 p-3 position-relative d-flex justify-content-end flex-column overflow-hidden ratio ratio-1x1"
-                style="flex:20%; max-width: 50vh;">
-                <img src="./wines/6K4A0477_533x.jpg" style="z-index: -1;" class="ratio ratio-1x1 position-absolute"
-                    alt="">
-                <div class="w-100 p-3 d-flex justify-content-end flex-column" name="product-description">
-                    <div class="p-2">
-                        <h5>Wine</h5>
-                        <p class="text-muted">Lorem ipsum doloris empire nomes wind altis no filliache</p>
-                    </div>
-                </div>
-            </li>
-            <li class="m-1 p-3 position-relative d-flex justify-content-end flex-column overflow-hidden ratio ratio-1x1"
-                style="flex:20%; max-width: 50vh;">
-                <img src="./wines/6K4A0477_533x.jpg" style="z-index: -1;" class="ratio ratio-1x1 position-absolute"
-                    alt="">
-                <div class="w-100 p-3 d-flex justify-content-end flex-column" name="product-description">
-                    <div class="p-2">
-                        <h5>Wine</h5>
-                        <p class="text-muted">Lorem ipsum doloris empire nomes wind altis no filliache</p>
-                    </div>
-                </div>
-            </li>
-            <li class="m-1 p-3 position-relative d-flex justify-content-end flex-column overflow-hidden ratio ratio-1x1"
-                style="flex:20%; max-width: 50vh;">
-                <img src="./wines/6K4A0477_533x.jpg" style="z-index: -1;" class="ratio ratio-1x1 position-absolute"
-                    alt="">
-                <div class="w-100 p-3 d-flex justify-content-end flex-column" name="product-description">
-                    <div class="p-2">
-                        <h5>Wine</h5>
-                        <p class="text-muted">Lorem ipsum doloris empire nomes wind altis no filliache</p>
-                    </div>
-                </div>
-            </li>
-            <li class="m-1 p-3 position-relative d-flex justify-content-end flex-column overflow-hidden ratio ratio-1x1"
-                style="flex:20%; max-width: 50vh;">
-                <img src="./wines/6K4A0477_533x.jpg" style="z-index: -1;" class="ratio ratio-1x1 position-absolute"
-                    alt="">
-                <div class="w-100 p-3 d-flex justify-content-end flex-column" name="product-description">
-                    <div class="p-2">
-                        <h5>Wine</h5>
-                        <p class="text-muted">Lorem ipsum doloris empire nomes wind altis no filliache</p>
-                    </div>
-                </div>
-            </li>
-            <li class="m-1 p-3 position-relative d-flex justify-content-end flex-column overflow-hidden ratio ratio-1x1"
-                style="flex:20%; max-width: 50vh;">
-                <img src="./wines/6K4A0477_533x.jpg" style="z-index: -1;" class="ratio ratio-1x1 position-absolute"
-                    alt="">
-                <div class="w-100 p-3 d-flex justify-content-end flex-column" name="product-description">
-                    <div class="p-2">
-                        <h5>Wine</h5>
-                        <p class="text-muted">Lorem ipsum doloris empire nomes wind altis no filliache</p>
-                    </div>
-                </div>
-            </li>
-            <li class="m-1 p-3 position-relative d-flex justify-content-end flex-column overflow-hidden ratio ratio-1x1"
-                style="flex:20%; max-width: 50vh;">
-                <img src="./wines/6K4A0477_533x.jpg" style="z-index: -1;" class="ratio ratio-1x1 position-absolute"
-                    alt="">
-                <div class="w-100 p-3 d-flex justify-content-end flex-column" name="product-description">
-                    <div class="p-2">
-                        <h5>Wine</h5>
-                        <p class="text-muted">Lorem ipsum doloris empire nomes wind altis no filliache</p>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div> -->
     <section class="h-100 p-5 d-flex">
         <div class="col-2 position-relative">
             <div class="mx-auto position-fixed" style="width: 15%; height: 75vh; overflow-y: scroll;">
@@ -358,7 +267,7 @@
                         <span>Region</span><i class="fa fa-angle-down" aria-hidden="true"></i>
                     </a>
                 </p>
-                <div class="collapse" id="regionFilter">
+                <div class="collapse w-75 p-3" id="regionFilter">
                     <input type="text" id="search-region">
                     <div class="p-0" name="regionList"></div>
                 </div>
@@ -368,7 +277,7 @@
                         <span>Price</span><i class="fa fa-angle-down" aria-hidden="true"></i>
                     </a>
                 </p>
-                <div class="collapse" id="priceFilter">
+                <div class="collapse w-75 p-3" id="priceFilter">
                     <div class="d-flex justify-content-between">
                         <span>min</span>
                         <span>max</span>
@@ -386,7 +295,7 @@
                         <span>Producer</span><i class="fa fa-angle-down" aria-hidden="true"></i>
                     </a>
                 </p>
-                <div class="collapse" id="producerFilter">
+                <div class="collapse w-75 p-3" id="producerFilter">
                     <input type="text" id="search-producer">
                     <div class="p-0" name="producerList"></div>
                 </div>
