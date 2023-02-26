@@ -42,6 +42,8 @@
     <!-- Bootstrap JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
     <style>
         @media only screen and (max-width: 1200px) {
             li:has(*[name="product-description"]) {
@@ -81,17 +83,52 @@
                 $($('#search-region + div div input').filter(function (index) { return !this.id.toLowerCase().match(search) })).parent().addClass('d-none')
             })
 
-            $('input').click(function () {
-                const regions = $('input[name="region"]:checked').map(function () { return $(this).val() }).get();
-                $('.single-product').each(function () {
-                    $(this).parent().removeClass('d-none');
-                    if (regions.length != 0 && !regions.includes($(this).find('input[name="region"]').attr('value'))) {
-                        $(this).parent().addClass('d-none');
-                    }
-                });
+            $('input[name="region"]').click(() => { filter() });
 
-            })
+            const priceArray = $('.price h6').map(function () { return parseFloat($(this).html()) }).get();
+            const minPrice = Math.floor(Math.min(...priceArray))
+            const maxPrice = Math.ceil(Math.max(...priceArray))
+            $("#slider-range").slider({
+                range: true,
+                min: minPrice,
+                max: maxPrice,
+                values: [
+                    minPrice,
+                    maxPrice],
+                slide: function (event, ui) {
+                    $('#priceFilter .min').html(ui.values[0]);
+                    $('#priceFilter .max').html(ui.values[1]);
+                    filter()
+                }
+            });
+            $('#priceFilter .min').html(minPrice);
+            $('#priceFilter .max').html(maxPrice);
         })
+
+        function filter() {
+            const regions = $('input[name="region"]:checked').map(function () { return $(this).val() }).get();
+            $('.single-product').each(function () {
+                $(this).parent().removeClass('d-none');
+
+                const price = parseInt($(this).find('.price h6').html());
+
+                const priceMin = $('#priceFilter .min').html()
+                const priceMax = $('#priceFilter .max').html()
+
+                console.log('Min: ' + priceMin);
+                console.log('Max: ' + priceMax);
+
+                const filters = [
+                    (regions.length != 0 && !regions.includes($(this).find('input[name="region"]').attr('value'))),
+                    (price < priceMin || price > priceMax)
+                ]
+                console.log(filters);
+
+                if (!filters.every(element => element === false)) {
+                    $(this).parent().addClass('d-none');
+                }
+            });
+        }
     </script>
 </head>
 
@@ -713,11 +750,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-100 p-5">
-                    <a name="search" id="search" class="btn btn-outline-primary border border-primary"
-                        role="button">Search
-                        <i class="fa fa-search" aria-hidden="true"></i>
+
+                <p>
+                    <a class="d-flex justify-content-between" data-toggle="collapse" href="#priceFilter" role="button">
+                        <span>Price</span><i class="fa fa-angle-down" aria-hidden="true"></i>
                     </a>
+                </p>
+                <div class="collapse" id="priceFilter">
+                    <div class="d-flex justify-content-between">
+                        <span>min</span>
+                        <span>max</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span class="min"></span>
+                        <span class="max"></span>
+                    </div>
+                    <div id="slider-range"></div>
                 </div>
             </div>
         </div>
@@ -730,7 +778,7 @@
                         <div>
                             <h5>WineName</h5>
                             <div class="price">
-                                <h6>3.5€</h6>
+                                <h6>20€</h6>
                             </div>
                         </div>
                         <div class="d-flex align-items-end">
