@@ -10,7 +10,7 @@
           "prix_carton" => 15.4,
           "tva" => 5.14,
           "remise" => 10.5,
-          "imagePrincipal" => "6K4A0536_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0536_533x.jpg",
           "ancien" => "2015",
           "region" => "Canary Islands",
           "couleur" => "changé",
@@ -37,7 +37,7 @@
           "prix_carton" => 15.4,
           "tva" => 5.14,
           "remise" => 10.5,
-          "imagePrincipal" => "6K4A0477_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0477_533x.jpg",
           "ancien" => "2015",
           "region" => "St. Barthélemy",
           "couleur" => "Rouge Foncé",
@@ -64,7 +64,7 @@
           "prix_carton" => 230.2,
           "tva" => 20,
           "remise" => 10,
-          "imagePrincipal" => "6K4A0578_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0578_533x.jpg",
           "ancien" => "1942",
           "region" => "Croatia",
           "couleur" => "blanc",
@@ -91,7 +91,7 @@
           "prix_carton" => 230.2,
           "tva" => 20,
           "remise" => 10,
-          "imagePrincipal" => "6K4A0536_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0536_533x.jpg",
           "ancien" => "1942",
           "region" => "Azerbaijan",
           "couleur" => "blanc",
@@ -118,7 +118,7 @@
           "prix_carton" => 230.2,
           "tva" => 20,
           "remise" => 10,
-          "imagePrincipal" => "6K4A0550_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0550_533x.jpg",
           "ancien" => "1942",
           "region" => "Niger",
           "couleur" => "blanc",
@@ -145,7 +145,7 @@
           "prix_carton" => 230.2,
           "tva" => 20,
           "remise" => 10,
-          "imagePrincipal" => "6K4A0829_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0829_533x.jpg",
           "ancien" => "1942",
           "region" => "Kuwait",
           "couleur" => "blanc",
@@ -172,7 +172,7 @@
           "prix_carton" => 230.2,
           "tva" => 20,
           "remise" => 10,
-          "imagePrincipal" => "6K4A0507_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0507_533x.jpg",
           "ancien" => "1942",
           "region" => "Nicaragua",
           "couleur" => "blanc",
@@ -199,7 +199,7 @@
           "prix_carton" => 230.2,
           "tva" => 20,
           "remise" => 10,
-          "imagePrincipal" => "6K4A0489_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0489_533x.jpg",
           "ancien" => "1942",
           "region" => "Australia",
           "couleur" => "blanc",
@@ -226,7 +226,7 @@
           "prix_carton" => 230.2,
           "tva" => 20,
           "remise" => 10,
-          "imagePrincipal" => "6K4A0483_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0483_533x.jpg",
           "ancien" => "1942",
           "region" => "Burkina Faso",
           "couleur" => "blanc",
@@ -253,7 +253,7 @@
           "prix_carton" => 230.2,
           "tva" => 20,
           "remise" => 10,
-          "imagePrincipal" => "6K4A0496_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0496_533x.jpg",
           "ancien" => "1942",
           "region" => "Comoros",
           "couleur" => "blanc",
@@ -280,7 +280,7 @@
           "prix_carton" => 230.2,
           "tva" => 20,
           "remise" => 10,
-          "imagePrincipal" => "AmberBottleShop_ToutBu_Bottleneck_Fort_SOL_byTiesBemelmans-64copy_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/AmberBottleShop_ToutBu_Bottleneck_Fort_SOL_byTiesBemelmans-64copy_533x.jpg",
           "ancien" => "1942",
           "region" => "Venezuela",
           "couleur" => "blanc",
@@ -307,7 +307,7 @@
           "prix_carton" => 230.2,
           "tva" => 20,
           "remise" => 10,
-          "imagePrincipal" => "6K4A0507_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0507_533x.jpg",
           "ancien" => "1942",
           "region" => "Micronesia",
           "couleur" => "blanc",
@@ -334,7 +334,7 @@
           "prix_carton" => 230.2,
           "tva" => 20,
           "remise" => 10,
-          "imagePrincipal" => "6K4A0478_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0478_533x.jpg",
           "ancien" => "1942",
           "region" => "U.S. Outlying Islands",
           "couleur" => "blanc",
@@ -361,7 +361,7 @@
           "prix_carton" => 230.2,
           "tva" => 20,
           "remise" => 10,
-          "imagePrincipal" => "6K4A0489_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0489_533x.jpg",
           "ancien" => "1942",
           "region" => "Germany",
           "couleur" => "blanc",
@@ -388,7 +388,7 @@
           "prix_carton" => 230.2,
           "tva" => 20,
           "remise" => 10,
-          "imagePrincipal" => "6K4A0483_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0483_533x.jpg",
           "ancien" => "1942",
           "region" => "Timor-Leste",
           "couleur" => "blanc",
@@ -415,7 +415,7 @@
           "prix_carton" => 230.2,
           "tva" => 20,
           "remise" => 10,
-          "imagePrincipal" => "6K4A0480_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0480_533x.jpg",
           "ancien" => "1942",
           "region" => "British Virgin Islands",
           "couleur" => "blanc",
@@ -442,7 +442,7 @@
           "prix_carton" => 230.2,
           "tva" => 20,
           "remise" => 10,
-          "imagePrincipal" => "6K4A0516_533x.jpg",
+          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0516_533x.jpg",
           "ancien" => "1942",
           "region" => "Uzbekistan",
           "couleur" => "blanc",
@@ -474,15 +474,16 @@
             if (!isset($_POST['productId'])) die(json_encode(array('error'=>'no item provided')));
 
     if (!isset($products[$_POST['productId']])) die(json_encode(array('error'=>'unknown item')));
+            $_POST['quantity'] = $_POST['quantity'] ?? 1;
             if (!isset($_SESSION['cart'][$_POST['productId']])){
                 $_SESSION['cart'][$_POST['productId']] = array(
-                    "qtt" => 1,
+                    "quantity" => $_POST['quantity'],
                     "product" => $products[$_POST['productId']]);
-                $response = json_encode(array('success' => $_SESSION['cart'][$_POST['productId']]['product']['nomProduit']. " added to cart"));
+                $response = json_encode(array('success' => $_SESSION['cart'][$_POST['productId']]['product']['nomProduit']. " added to cart", 'quantity' => array_sum(array_column($_SESSION['cart'], "quantity"))));
                 die($response);
             } else {
-                $_SESSION['cart'][$_POST['productId']]['qtt'] = ($_SESSION['cart'][$_POST['productId']]['qtt'] + 1);
-                die(json_encode(array('quantity' => array_sum(array_column($_SESSION['cart'], "qtt")), 'success' => 'Quantity updated')));
+                $_SESSION['cart'][$_POST['productId']]['quantity'] = ($_SESSION['cart'][$_POST['productId']]['quantity'] + $_POST['quantity']);
+                die(json_encode(array('quantity' => array_sum(array_column($_SESSION['cart'], "quantity")), 'success' => 'Quantity updated')));
             }
             break;
 
@@ -492,21 +493,21 @@
     if (!isset($products[$_POST['productId']])) die(json_encode(array('error'=>'unknown item')));
             if (!isset($_SESSION['cart'][$_POST['productId']])){
                 die(json_encode(array('error' => 'product not in cart')));
-            } else if ($_SESSION['cart'][$_POST['productId']]['qtt'] == 1) {
-                $response = json_encode(array('success' => $_SESSION['cart'][$_POST['productId']]['product']['nomProduit']. " removed from cart"));
+            } else if ($_SESSION['cart'][$_POST['productId']]['quantity'] == 1) {
+                $response = json_encode(array('quantity' => array_sum(array_column($_SESSION['cart'], "quantity")), 'success' => $_SESSION['cart'][$_POST['productId']]['product']['nomProduit']. " removed from cart"));
                 unset($_SESSION['cart'][$_POST['productId']]);
                 die($response);
             } else {
-                $_SESSION['cart'][$_POST['productId']]['qtt'] = ($_SESSION['cart'][$_POST['productId']]['qtt'] - 1);
-                die(json_encode(array('quantity' => array_sum(array_column($_SESSION['cart'], "qtt")), 'success' => 'Quantity updated')));
+                $_SESSION['cart'][$_POST['productId']]['quantity'] = ($_SESSION['cart'][$_POST['productId']]['quantity'] - 1);
+                die(json_encode(array('quantity' => array_sum(array_column($_SESSION['cart'], "quantity")), 'success' => 'Quantity updated')));
             }
             break;
         case 'get_cart':
-            die(json_encode($_SESSION['cart']));
+            die(json_encode(array("products" => $_SESSION['cart'], 'quantity' => array_sum(array_column($_SESSION['cart'], "quantity")))));
             break;
         case 'reset_cart':
             $_SESSION['cart'] = array();
-            die(json_encode(array('success' => 'cart have been cleared')));
+            die(json_encode(array('success' => 'cart have been cleared', 'quantity' => 0)));
             break;
         default:
             die(json_encode(array('error'=>'undefined function')));

@@ -33,6 +33,7 @@
         href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.css'
         integrity='sha512-03p8fFZpOREY+YEQKSxxretkFih/D3AVX5Uw16CAaJRg14x9WOF18ZGYUnEqIpIqjxxgLlKgIB2kKIjiOD6++w=='
         crossorigin='anonymous' />
+    <script src="/script/cart.js" defer></script>
 
     <script defer>
         $(window).scroll(function () {
@@ -82,14 +83,14 @@
 
 <body class="overflow-hidden" style="overflow-x: hidden;">
     <header style="z-index: 10" class="d-flex w-100 justify-content-evenly p-3 position-fixed">
-        <img src="./banner.jpg" style="height: 5em" alt="">
+        <img src="/banner.jpg" style="height: 5em" alt="">
         <nav>
             <ul style="list-style: none; display:flex;">
                 <li>
-                    <a href="http://127.0.0.1/negosud" class="p-3 nav-link">Home</a>
+                    <a href="/" class="p-3 nav-link">Home</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1/negosud/products" class="p-3 nav-link">Products</a>
+                    <a href="/products" class="p-3 nav-link">Products</a>
                 </li>
                 <li>
                     <a href="#" class="p-3 nav-link">Contact</a>
@@ -100,9 +101,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="p-3 nav-link">
+                    <a data-bs-toggle="offcanvas" data-bs-target="#cartMenu" class="m-3 nav-link position-relative">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        <span class="badge badge-primary"></span>
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+                            id="badgeCart">
+                        </span>
                     </a>
                 </li>
             </ul>
@@ -110,7 +114,7 @@
     </header>
     <div id="loader" style="z-index: 1;"
         class="vw-100 vh-100 top-0 d-flex justify-content-center align-items-center position-absolute bg-white">
-        <img src="http://127.0.0.1/negosud/d3f472b06590a25cb4372ff289d81711_w200.gif" alt="">
+        <img src="/d3f472b06590a25cb4372ff289d81711_w200.gif" alt="">
     </div>
     <section class="vw-100 vh-100 d-flex justify-content-center align-items-center position-relative">
         <div style="z-index: -999; background-image: url('./5518724.jpg'); background-size: cover;"
@@ -128,34 +132,41 @@
                 <h1 style="font-family: math;">Qui somme nous ?</h1>
                 <div class="row">
                     <div class="" style="font-family: math;">
-                        <p>Négosud est une entreprise familiale française spécialisée dans la vente de vin. Depuis sa
-                            création il y a plus de 30 ans, Négosud s'est forgé une réputation solide en proposant des
+                        <p>Négosud est une entreprise familiale française spécialisée dans la vente de vin. Depuis
+                            sa
+                            création il y a plus de 30 ans, Négosud s'est forgé une réputation solide en proposant
+                            des
                             vins
                             de qualité issus des terroirs de la région des Pays d'Oc.</p>
-                        <p>Le fondateur de l'entreprise, passionné par le monde viticole, a toujours été très attaché à
+                        <p>Le fondateur de l'entreprise, passionné par le monde viticole, a toujours été très
+                            attaché à
                             la
-                            préservation des savoir-faire français en matière de vinification. C'est pourquoi, dès le
+                            préservation des savoir-faire français en matière de vinification. C'est pourquoi, dès
+                            le
                             début,
                             Négosud a choisi de collaborer avec des viticulteurs locaux afin de proposer des vins de
                             qualité
                             qui reflètent l'authenticité des terroirs de la région.</p>
-                        <p>Grâce à son engagement en faveur de la qualité et de l'authenticité, Négosud a su conquérir
+                        <p>Grâce à son engagement en faveur de la qualité et de l'authenticité, Négosud a su
+                            conquérir
                             le
                             cœur de nombreux amateurs de vin en France et à l'étranger. Aujourd'hui, l'entreprise
                             continue
-                            de travailler en étroite collaboration avec des viticulteurs locaux pour proposer des vins
+                            de travailler en étroite collaboration avec des viticulteurs locaux pour proposer des
+                            vins
                             de
                             qualité exceptionnelle, tout en préservant l'héritage viticole français.</p>
                         <p>Chez Négosud, nous sommes fiers de notre histoire et de notre engagement en faveur des
                             terroirs
-                            français. Nous sommes convaincus que notre passion pour le vin se reflète dans la qualité de
+                            français. Nous sommes convaincus que notre passion pour le vin se reflète dans la
+                            qualité de
                             nos
                             produits et nous sommes heureux de pouvoir les partager avec nos clients.</p>
                     </div>
                 </div>
             </div>
             <div class="p-3 col-6" style="flex: 1;">
-                <img class="w-75 mx-auto" src="./xqhs7k1tusvdohhgagmq.jpg" alt="">
+                <img class="w-75 mx-auto" src="/xqhs7k1tusvdohhgagmq.jpg" alt="">
             </div>
         </div>
     </section>

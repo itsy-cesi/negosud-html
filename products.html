@@ -44,6 +44,7 @@
 
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <script src="/script/cart.js" defer></script>
     <style>
         @media only screen and (max-width: 1200px) {
             li:has(*[name="product-description"]) {
@@ -76,7 +77,7 @@
         const listImage = ["6K4A0477_533x.jpg", "6K4A0483_533x.jpg", "6K4A0496_533x.jpg", "6K4A0507_533x.jpg", "6K4A0516_533x.jpg", "6K4A0534_533x.jpg", "6K4A0570_533x.jpg", "6K4A0814_533x.jpg", "6K4A0478_533x.jpg", "6K4A0489_533x.jpg", "6K4A0504_533x.jpg", "6K4A0513_533x.jpg", "6K4A0522_533x.jpg", "6K4A0536_533x.jpg", "6K4A0572_533x.jpg", "6K4A0829_533x.jpg", "6K4A0480_533x.jpg", "6K4A0493_533x.jpg", "6K4A0506_533x.jpg", "6K4A0514_533x.jpg", "6K4A0530_533x.jpg", "6K4A0550_533x.jpg", "6K4A0578_533x.jpg", "AmberBottleShop_ToutBu_Bottleneck_Fort_SOL_byTiesBemelmans-64copy_533x.jpg"]
 
         async function getProducts() {
-            await $.post('http://127.0.0.1/negosud/api/Produits.php', function (response) {
+            await $.post('http://127.0.0.1/api/Produits.php', function (response) {
                 const products = (response);
                 $('div[name="products"]').html();
                 products.forEach((product) => {
@@ -87,7 +88,7 @@
                             <input type="hidden" name="producer" value="${product.producteur}">
                             <input type="hidden" name="price" value="${product.prix_unitaire}">
                             <input type="hidden" name="id" value="${product.id}">
-                            <img class="img-fluid w-100" src="http://127.0.0.1/negosud/wines/${product.imagePrincipal}" alt="">
+                            <img class="img-fluid w-100" src="${product.imagePrincipal}" alt="">
                             <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
                                 <div>
                                     <h5>${product.nomProduit}</h5>
@@ -175,7 +176,7 @@
             $(document).on('click', '.single-product', (e) => {
                 e.preventDefault();
                 const target = e.currentTarget;
-                document.location = ('http://127.0.0.1/negosud/product?id=' + $(target).find('input[name="id"]').val());
+                document.location = ('http://127.0.0.1/product?id=' + $(target).find('input[name="id"]').val());
             })
             const priceArray = $('.price h6').map(function () { return parseFloat($(this).html()) }).get();
             const minPrice = Math.floor(Math.min(...priceArray))
@@ -201,14 +202,14 @@
 
 <body class="overflow-hidden">
     <header style="z-index: 10" class="d-flex w-100 justify-content-evenly p-3 position-fixed">
-        <img src="./banner.jpg" style="height: 5em" alt="">
+        <img src="/banner.jpg" style="height: 5em" alt="">
         <nav>
             <ul style="list-style: none; display:flex;">
                 <li>
-                    <a href="http://127.0.0.1/negosud" class="p-3 nav-link">Home</a>
+                    <a href="http://127.0.0.1/" class="p-3 nav-link">Home</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1/negosud/products" class="p-3 nav-link">Products</a>
+                    <a href="http://127.0.0.1/products" class="p-3 nav-link">Products</a>
                 </li>
                 <li>
                     <a href="#" class="p-3 nav-link">Contact</a>
@@ -219,23 +220,26 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="p-3 nav-link">
+                    <a data-bs-toggle="offcanvas" data-bs-target="#cartMenu" class="m-3 nav-link position-relative">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        <span class="badge badge-primary"></span>
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+                            id="badgeCart">
+                        </span>
                     </a>
                 </li>
             </ul>
         </nav>
     </header>
     <header style="z-index: 10; opacity: 0;" class="d-flex w-100 justify-content-evenly p-3">
-        <img src="./banner.jpg" style="height: 5em" alt="">
+        <img src="/banner.jpg" style="height: 5em" alt="">
         <nav>
             <ul style="list-style: none; display:flex;">
                 <li>
-                    <a href="http://127.0.0.1/negosud" class="p-3 nav-link">Home</a>
+                    <a href="http://127.0.0.1/" class="p-3 nav-link">Home</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1/negosud/products" class="p-3 nav-link">Products</a>
+                    <a href="http://127.0.0.1/products" class="p-3 nav-link">Products</a>
                 </li>
                 <li>
                     <a href="#" class="p-3 nav-link">Contact</a>
@@ -246,9 +250,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="p-3 nav-link">
+                    <a data-bs-toggle="offcanvas" data-bs-target="#cartMenu" class="m-3 nav-link position-relative">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        <span class="badge badge-primary"></span>
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+                            id="badgeCart">
+                        </span>
                     </a>
                 </li>
             </ul>
@@ -256,7 +263,7 @@
     </header>
     <div id="loader" style="z-index: 1;"
         class="vw-100 vh-100 top-0 d-flex justify-content-center align-items-center position-absolute bg-white">
-        <img src="http://127.0.0.1/negosud/d3f472b06590a25cb4372ff289d81711_w200.gif" alt="">
+        <img src="http://127.0.0.1/d3f472b06590a25cb4372ff289d81711_w200.gif" alt="">
     </div>
     <section class="h-100 p-5 d-flex">
         <div class="col-2 position-relative">

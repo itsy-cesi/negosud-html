@@ -44,12 +44,13 @@
 
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+
     <script defer>
         async function make() {
             const urlParams = new URLSearchParams(window.location.search);
 
-            await $.post('http://127.0.0.1/negosud/api/Produits/' + urlParams.get('id') + '.php', function (response) {
-                $('#productImage').attr('src', `http://127.0.0.1/negosud/wines/${response.imagePrincipal}`);
+            await $.post('http://127.0.0.1/api/Produits/' + urlParams.get('id') + '.php', function (response) {
+                $('#productImage').attr('src', `${response.imagePrincipal}`);
                 $('#productProducer').html(response.producteur)
                 $('#productName').html(response.nomProduit);
                 $('#productPrice').html(response.prix_unitaire);
@@ -61,6 +62,7 @@
                 $('#productAlcool').html(response.alcool);
                 $('#productAlim').html(response.aliments);
                 $('#productExp').html(response.expiration);
+                $('#buy-it').attr('product-id', response.id)
             });
 
             $('#loader').addClass('d-none'); $('body').removeClass('overflow-hidden');
@@ -79,6 +81,7 @@
             }
         });
     </script>
+    <script src="/script/cart.js" defer></script>
     <style>
         .h-inherit {
             width: inherit;
@@ -97,14 +100,14 @@
 
 <body class="overflow-hidden">
     <header style="z-index: 10" class="d-flex w-100 justify-content-evenly p-3 position-fixed visually-hidden">
-        <img src="./banner.jpg" style="height: 5em" alt="">
+        <img src="/banner.jpg" style="height: 5em" alt="">
         <nav>
             <ul style="list-style: none; display:flex;">
                 <li>
-                    <a href="http://127.0.0.1/negosud" class="p-3 nav-link">Home</a>
+                    <a href="http://127.0.0.1/" class="p-3 nav-link">Home</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1/negosud/products" class="p-3 nav-link">Products</a>
+                    <a href="http://127.0.0.1/products" class="p-3 nav-link">Products</a>
                 </li>
                 <li>
                     <a href="#" class="p-3 nav-link">Contact</a>
@@ -115,23 +118,26 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="p-3 nav-link">
+                    <a data-bs-toggle="offcanvas" data-bs-target="#cartMenu" class="m-3 nav-link position-relative">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        <span class="badge badge-primary"></span>
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+                            id="">
+                        </span>
                     </a>
                 </li>
             </ul>
         </nav>
     </header>
     <header style="z-index: 10" class="d-flex w-100 justify-content-evenly p-3">
-        <img src="./banner.jpg" style="height: 5em" alt="">
+        <img src="/banner.jpg" style="height: 5em" alt="">
         <nav>
             <ul style="list-style: none; display:flex;">
                 <li>
-                    <a href="http://127.0.0.1/negosud" class="p-3 nav-link">Home</a>
+                    <a href="http://127.0.0.1/" class="p-3 nav-link">Home</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1/negosud/products" class="p-3 nav-link">Products</a>
+                    <a href="http://127.0.0.1/products" class="p-3 nav-link">Products</a>
                 </li>
                 <li>
                     <a href="#" class="p-3 nav-link">Contact</a>
@@ -142,9 +148,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="p-3 nav-link">
+                    <a data-bs-toggle="offcanvas" data-bs-target="#cartMenu" class="m-3 nav-link position-relative">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        <span class="badge badge-primary"></span>
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+                            id="badgeCart">
+                        </span>
                     </a>
                 </li>
             </ul>
@@ -152,7 +161,7 @@
     </header>
     <div id="loader" style="width: 100vw; height: 100vh; z-index: -1;"
         class="top-0 d-flex justify-content-center align-items-center position-absolute bg-white">
-        <img src="http://127.0.0.1/negosud/d3f472b06590a25cb4372ff289d81711_w200.gif" alt="">
+        <img src="http://127.0.0.1/d3f472b06590a25cb4372ff289d81711_w200.gif" alt="">
     </div>
     <section style="height: 75vh" class="d-flex justify-content-center align-items-center">
         <div class="d-flex w-75 h-100">
@@ -206,7 +215,8 @@
                     </div>
                 </div>
                 <div class="d-flex mt-3">
-                    <a id="buy-it" class="btn btn-primary w-50 ms-5" role="button"><i class="fa fa-shopping-cart"></i>
+                    <a id="buy-it" product-id="" class="btn btn-primary w-50 ms-5" role="button"><i
+                            class="fa fa-shopping-cart"></i>
                         Buy</a>
                 </div>
             </div>
