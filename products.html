@@ -74,7 +74,74 @@
     </style>
 
     <script defer>
+        const regionList = ["Ain", "Aisne", "Allier", "Alpes-de-Haute-Provence", "Hautes-Alpes", "Alpes-Maritimes", "Ardèche", "Ardennes", "Ariège", "Aube", "Aude", "Aveyron", "Bouches-du-Rhône", "Calvados", "Cantal", "Charente", "Charente-Maritime", "Cher", "Corrèze", "Corse-du-Sud", "Haute-Corse", "Côte-d'Or", "Côtes d'Armor", "Creuse", "Dordogne", "Doubs", "Drôme", "Eure", "Eure-et-Loir", "Finistère", "Gars", "Haute-Garonne", "Gers", "Gironde", "Hérault", "Ille-et-Vilaine", "Indre", "Indre-et-Loire", "Isère", "Jura", "Landes", "Loir-et-Cher", "Loire", "Haute-Loire", "Loire-Atlantique", "Loiret", "Lot", "Lot-et-Garonne", "Lozère", "Maine-et-Loire", "Manche", "Marne", "Haute-Marne", "Mayenne", "Meurthe-et-Moselle", "Meuse", "Morbihan", "Moselle", "Nièvre", "Nord", "Oise", "Orne", "Pas-de-Calais", "Puy-de-Dôme", "Pyrénées-Atlantiques", "Hautes-Pyrénées", "Pyrénées-Orientales", "Bas-Rhin", "Haut-Rhin", "Rhône", "Haute-Saône", "Saône-et-Loire", "Sarthe", "Savoie", "Haute-Savoie", "Paris", "Seine-Maritime", "Seine-et-Marne", "Yvelines", "Deux-Sèvres", "Somme", "Tarn", "Tarn-et-Garonne", "Var", "Vaucluse", "Vandée", "Vienne", "Haute-Vienne", "Vosges", "Yonne", "Territoire de Belfort", "Essonne", "Hauts-de-Seine", "Seine-St-Denis", "Val-de-Marne", "Val-D'Oise", "Guadeloupe", "Martinique", "Guyane", "La Réunion", "Mayotte"];
+        const producerList = ["Des Bouteilles À-L-AMÈRE", "Laura AILLAUD", "Les Grangeons de l' ALBARINE", "Domaine ALÉOFANE", "Thierry ALLEMAND", "Domaine Pierre ANDRÉ", "Domaine des 2 ANES", "APHROS", "Antoine ARENA", "Antoine-Marie ARENA", "Jean-Baptiste ARENA", "Clos Puy ARNAUD", "Domaine de l' ASTRÉ", "Les Vignes de l' ATRIE", "Sylvie AUGEREAU", "Folias de BACO", "Elodie BALME", "Franck BALTHAZAR", "Clément BARAUT", "Château BAROUILLET", "Domaine Léon BARRAL", "Vignoble Paul BARRE", "Romain Le BARS", "Raphaël BARTUCCI", "Judith BECK", "Domaine BEDOUET", "Maison en BELLES-LIES", "Domaine de BELLIVIÈRE", "Dominique BELLUARD", "Azienda Vittorio E Figli BERA", "Les BERTRAND", "Château de BÉRU", "Domaine Mouthes Le BIHAN", "Christian BINNER", "Sébastien BOBINET", "Sylvain BOCK", "Domaine BONNET-COTTON", "Clos de la BONNETTE", "Domaine BORDATTO", "Domaine BORNARD", "Domaine de BOTHELAND", "Kevin BOUILLET", "Château BRANDEAU", "Domaine BRETON", "Le Clos de la BRUYÈRE", "Domaine des BUIS", "CA-BOIT-LIBRE", "Les vins de la CADETTE", "CALCARIUS", "Andréa CALEK", "Domaine la CALMETTE", "Toni CARBO", "La CAVE-DU-BUIZIN", "Didier CHAFFARDON", "Thomas CHANY", "Patrice COLIN", "Château La COLOMBIÈRE", "Hautes Terres de COMBEROUSSE", "Domaine COMPLÉMEN'TERRE", "Clos CONSTANTIN", "Domaine COQUELICOT", "Ferme de PORT COUSTIC", "Mas COUTELOU", "Domaine de la CRAS", "Domaine CRUCHANDEAU", "Domaine CURTET", "Domaine DANDELION", "Jean-François DEBOURG", "DENAVOLO", "Domaine DERAIN", "Léo DIRRINGER", "Champagne Didier DOUÉ", "Champagne DRAPPIER", "Thibault DUCROUX", "Champagne Julie DUFOUR", "Charles DUFOUR", "Domaine François DUMAS", "Mas d'AGALIS", "Domaine de l' ÉCU", "Domaine les EMINADES", "Domaine Ludovic ENGELVIN", "ENVINATE", "Clos FANTINE", "Emilien FENEUIL", "Jean FOILLARD", "FONTERENZA", "Azienda agricola Elisabetta FORADORI", "Mas FOULAQUIER", "Château la FRANCHAIE", "Domaine des FRÈRES", "Domaine PIERRE FRICK", "Cantina FURLANI", "Champagne Francis BOULARD et Fille", "Champagne LAHERTE Frères", "Anne et Jean-François GANEVAT", "Jean-François GANEVAT", "Vincent GAUDRY", "Domaine GIACHINO", "Domaine Philippe GILBERT", "Domaine GIUDICELLI", "France GONZALVEZ", "Domaine GRAMENON", "Domaine de la GRAPPERIE", "Grain par Grain", "Maison HÉROUT", "Domaine HORS-CIEL", "Domaine HOUILLON", "Domaine ILARRIA", "Domaine de L ISERAND", "Domaine Jérôme JOURET", "Domaine L'ILE-ROUGE", "Domaine LANDRON", "Jean-Claude LAPALU", "Domaine Marcel LAPIERRE", "Camin LARREDYA", "Champagne Jacques LASSAIGNE", "Maxime-François LAURENT", "Domaine LEDOGAR", "Cidrerie du LÉGUER", "Cidre LEMASSON", "Fiona LEROY", "Richard LEROY", "Château LESTIGNAC", "Domaine Antoine LIENHARDT", "Christophe LINDELAUB", "La Ferme des 7 LUNES", "Les Vignes de l'ANGEVIN", "Domaine de l'OCTAVIN", "Bertrand et Axelle MACHARD-de-GRAMONT", "Maxime MAGNON", "Cosse et MAISONNEUVE", "LUCY MARGAUX", "Domaine Antoine MAROIS", "Clos MASSOTTE", "Domaine MATASSA", "Jean MAX", "Clos des Vignes du MAYNES", "Mas MELLET", "Château de MERANDE", "Jules MÉTRAS", "Yvon MÉTRAS", "Domaine Julien MEYER", "Château MEYLET", "Champagne Les Frères MIGNON", "Domaine MIOLANNE", "Domaine de MIREBEAU", "Domaine aux MOINES", "Ferme de BOIS MOISSET", "Domaine Le Bout du MONDE", "Domaine De MOOR", "Noëlla MORANTIN", "Domaine MOREL", "Domaine MOSSE", "MOURESSIPE", "Vandal-Wine / NADA", "Guillaume NOIRE", "Azienda Arianna OCCHIPINTI", "GUT OGGAU", "OPI-D'AQUI", "André OSTERTAG", "Maison Emmanuel Houillon et Pierre OVERNOY", "Philippe PACALET", "Domaine PADIÉ", "Domaine La PAONNERIE", "Les Cailloux du PARADIS", "PARTIDA-CREUS", "Domaine des PASSAGES", "Valentina PASSALACQUA", "Domaine PATTES-LOUP", "PEIRA-LEVADA", "Le Mas de Mon PÈRE", "Mas del PÉRIÉ", "La PETITE-BAIGNEUSE", "Domaine de la PETITE-SOEUR", "Domaine PLAGEOLES", "Clos des PLANTES", "Le Raisin à PLUME", "La PORTE-SAINT-JEAN", "Domaine du POSSIBLE", "Domaine Claus PREISINGER", "Thomas PUECHAVY", "Vignobles PUEYO", "Château le PUY", "Pepe RAVENTOS", "Vignoble RÉVEILLE", "Marcel RICHAUD", "Catherine RISS", "Domaine ROBERT-Denogent", "ROC-des-ANGES", "Domaine ROLS", "Elian Da ROS", "ROUCAS-TOUMBA", "Christian ROUCHIER", "Les Bottes ROUGES", "Domaine des ROUGES-QUEUES", "Fanny SABRE", "Domaine La Ferme SAINT-MARTIN", "Château SAINTE-ANNE", "Ferme de la SANSONNIÈRE", "La Graine SAUVAGE", "Rémi SÉDÈS", "Jean-Baptiste SENAT", "Domaine de la SÉNÉCHALIÈRE", "Vignoble de La Coulée de SERRANT", "SEXTANT", "Domaine SICUS", "Vinyes SINGULARS", "Hervé SOUHAUT", "Les Frères SOULIER", "La SOURCE-du-RUAULT", "Maison STEPHAN", "Thibault STEPHAN", "Domaine Benjamin TAILLANDIER", "Le TEMPS-des-CERISES", "Louis TERRAL", "Un Coin sur TERRE", "TERRE-de-L'ÉLU", "TERRE-des-DAMES", "Les TERRES-BLEUES", "Les TERRES-PROMISES", "TERRES-des-NUS", "Jean Paul et Charly THÉVENET", "Domaine THILLARDON", "Domaine Julien THUREL", "Domaine Julien THUREL", "Domaine de la Grange TIPHAINE", "Château TIRE-PÉ", "Domaine Stéphane TISSOT", "Le Clos des TREILLES", "Clos du TUE-BOEUF", "Domaine TURENNE", "Domaine U-STILICCIONU", "Champagne VAL'FRISON", "Maison VALETTE", "Domaine des VIGNEAUX", "Domaine VILLEMADE", "Domaine VINCENDEAU", "VOUETTE-et-SORBÉE", "Cidrerie du VULCAIN", "WA-SUD", "Grégory WHITE", "Ferme de l' YONNIÈRE", "Domaine YOYO"]
+        const listImage = ["6K4A0477_533x.jpg", "6K4A0483_533x.jpg", "6K4A0496_533x.jpg", "6K4A0507_533x.jpg", "6K4A0516_533x.jpg", "6K4A0534_533x.jpg", "6K4A0570_533x.jpg", "6K4A0814_533x.jpg", "6K4A0478_533x.jpg", "6K4A0489_533x.jpg", "6K4A0504_533x.jpg", "6K4A0513_533x.jpg", "6K4A0522_533x.jpg", "6K4A0536_533x.jpg", "6K4A0572_533x.jpg", "6K4A0829_533x.jpg", "6K4A0480_533x.jpg", "6K4A0493_533x.jpg", "6K4A0506_533x.jpg", "6K4A0514_533x.jpg", "6K4A0530_533x.jpg", "6K4A0550_533x.jpg", "6K4A0578_533x.jpg", "AmberBottleShop_ToutBu_Bottleneck_Fort_SOL_byTiesBemelmans-64copy_533x.jpg"]
+
+        class Product {
+            constructor(arg) {
+                this.region = arg[0];
+                this.producer = arg[1];
+                this.price = arg[2];
+                this.id = arg[3];
+                this.image = 'http://127.0.0.1/negosud/wines/' + arg[4];
+                this.name = arg[5];
+            }
+        }
+
+        listProduct = [...Array(35).keys()].map(function (a) {
+            return new Product([
+                regionList[Math.floor(Math.random() * regionList.length)],
+                producerList[Math.floor(Math.random() * producerList.length)],
+                (Math.floor(Math.random() * 35) + 1),
+                a,
+                listImage[Math.floor(Math.random() * listImage.length)],
+                'Wine'
+            ])
+        })
+        console.log(listProduct);
         $(document).ready(() => {
+            producerList.forEach((producer) => {
+                const item = `<div class="form-check"><input class="form-check-input" type="checkbox" id="${producer}" name="producer" value="${producer}"><label for="${producer}" class="form-check-label">${producer}</label></div>`
+                $('div[name="producerList"]').append(item);
+            })
+            regionList.forEach((region) => {
+                const item = `<div class="form-check"><input class="form-check-input" type="checkbox" id="${region}" name="region" value="${region}"><label for="${region}" class="form-check-label">${region}</label></div>`
+                $('div[name="regionList"]').append(item);
+            })
+            listProduct.forEach((product) => {
+                const item = `<div class="col-lg-3 col-md-6 h-fit-content">
+                <div class="single-product position-relative">
+                    <input type="hidden" name="region" value="${product.region}">
+                    <input type="hidden" name="producer" value="${product.producer}">
+                    <input type="hidden" name="price" value="${product.price}">
+                    <input type="hidden" name="id" value="${product.id}">
+                    <img class="img-fluid w-100" src="${product.image}" alt="">
+                    <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
+                        <div>
+                            <h5>${product.name}</h5>
+                            <div class="price">
+                                <h6>${product.price}€</h6>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-end">
+                            <a name="buy-it" id="buy-it" class="p-2 btn btn-outline-primary" role="button">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+                $('div[name="products"]').append(item);
+            })
+            $('#search-producer').keyup(function () {
+                const search = $(this).val().toLowerCase();
+
+                $('#search-producer + div div').removeClass('d-none')
+
+                $($('#search-producer + div div input').filter(function (index) { return !this.id.toLowerCase().match(search) })).parent().addClass('d-none')
+            })
+
             $('#search-region').keyup(function () {
                 const search = $(this).val().toLowerCase();
 
@@ -84,6 +151,7 @@
             })
 
             $('input[name="region"]').click(() => { filter() });
+            $('input[name="producer"]').click(() => { filter() });
 
             const priceArray = $('.price h6').map(function () { return parseFloat($(this).html()) }).get();
             const minPrice = Math.floor(Math.min(...priceArray))
@@ -107,6 +175,7 @@
 
         function filter() {
             const regions = $('input[name="region"]:checked').map(function () { return $(this).val() }).get();
+            const producers = $('input[name="producer"]:checked').map(function () { return $(this).val() }).get();
             $('.single-product').each(function () {
                 $(this).parent().removeClass('d-none');
 
@@ -120,6 +189,7 @@
 
                 const filters = [
                     (regions.length != 0 && !regions.includes($(this).find('input[name="region"]').attr('value'))),
+                    (producers.length != 0 && !producers.includes($(this).find('input[name="producer"]').attr('value'))),
                     (price < priceMin || price > priceMax)
                 ]
                 console.log(filters);
@@ -282,7 +352,7 @@
     </div> -->
     <section class="h-100 p-5 d-flex">
         <div class="col-2 position-relative">
-            <div class="mx-auto position-fixed vh-75" style="width: 15%">
+            <div class="mx-auto position-fixed" style="width: 15%; height: 75vh; overflow-y: scroll;">
                 <p>
                     <a class="d-flex justify-content-between" data-toggle="collapse" href="#regionFilter" role="button">
                         <span>Region</span><i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -290,465 +360,7 @@
                 </p>
                 <div class="collapse" id="regionFilter">
                     <input type="text" id="search-region">
-                    <div class="p-0">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Ain" name="region" value="Ain">
-                            <label for="Ain" class="form-check-label">Ain</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Aisne" name="region" value="Aisne">
-                            <label for="Aisne" class="form-check-label">Aisne</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Allier" name="region" value="Allier">
-                            <label for="Allier" class="form-check-label">Allier</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Alpes-de-Haute-Provence" name="region"
-                                value="Alpes-de-Haute-Provence">
-                            <label for="Alpes-de-Haute-Provence"
-                                class="form-check-label">Alpes-de-Haute-Provence</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Hautes-Alpes" name="region"
-                                value="Hautes-Alpes">
-                            <label for="Hautes-Alpes" class="form-check-label">Hautes-Alpes</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Alpes-Maritimes" name="region"
-                                value="Alpes-Maritimes">
-                            <label for="Alpes-Maritimes" class="form-check-label">Alpes-Maritimes</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Ardèche" name="region" value="Ardèche">
-                            <label for="Ardèche" class="form-check-label">Ardèche</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Ardennes" name="region"
-                                value="Ardennes">
-                            <label for="Ardennes" class="form-check-label">Ardennes</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Ariège" name="region" value="Ariège">
-                            <label for="Ariège" class="form-check-label">Ariège</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Aube" name="region" value="Aube">
-                            <label for="Aube" class="form-check-label">Aube</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Aude" name="region" value="Aude">
-                            <label for="Aude" class="form-check-label">Aude</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Aveyron" name="region" value="Aveyron">
-                            <label for="Aveyron" class="form-check-label">Aveyron</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Bouches-du-Rhône" name="region"
-                                value="Bouches-du-Rhône">
-                            <label for="Bouches-du-Rhône" class="form-check-label">Bouches-du-Rhône</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Calvados" name="region"
-                                value="Calvados">
-                            <label for="Calvados" class="form-check-label">Calvados</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Cantal" name="region" value="Cantal">
-                            <label for="Cantal" class="form-check-label">Cantal</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Charente" name="region"
-                                value="Charente">
-                            <label for="Charente" class="form-check-label">Charente</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Charente-Maritime" name="region"
-                                value="Charente-Maritime">
-                            <label for="Charente-Maritime" class="form-check-label">Charente-Maritime</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Cher" name="region" value="Cher">
-                            <label for="Cher" class="form-check-label">Cher</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Corrèze" name="region" value="Corrèze">
-                            <label for="Corrèze" class="form-check-label">Corrèze</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Corse-du-Sud" name="region"
-                                value="Corse-du-Sud">
-                            <label for="Corse-du-Sud" class="form-check-label">Corse-du-Sud</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Haute-Corse" name="region"
-                                value="Haute-Corse">
-                            <label for="Haute-Corse" class="form-check-label">Haute-Corse</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Côte-d'Or" name="region"
-                                value="Côte-d'Or">
-                            <label for="Côte-d'Or" class="form-check-label">Côte-d'Or</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Côtes d'Armor" name="region"
-                                value="Côtes d'Armor">
-                            <label for="Côtes d'Armor" class="form-check-label">Côtes d'Armor</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Creuse" name="region" value="Creuse">
-                            <label for="Creuse" class="form-check-label">Creuse</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Dordogne" name="region"
-                                value="Dordogne">
-                            <label for="Dordogne" class="form-check-label">Dordogne</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Doubs" name="region" value="Doubs">
-                            <label for="Doubs" class="form-check-label">Doubs</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Drôme" name="region" value="Drôme">
-                            <label for="Drôme" class="form-check-label">Drôme</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Eure" name="region" value="Eure">
-                            <label for="Eure" class="form-check-label">Eure</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Eure-et-Loir" name="region"
-                                value="Eure-et-Loir">
-                            <label for="Eure-et-Loir" class="form-check-label">Eure-et-Loir</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Finistère" name="region"
-                                value="Finistère">
-                            <label for="Finistère" class="form-check-label">Finistère</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Gars" name="region" value="Gars">
-                            <label for="Gars" class="form-check-label">Gars</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Haute-Garonne" name="region"
-                                value="Haute-Garonne">
-                            <label for="Haute-Garonne" class="form-check-label">Haute-Garonne</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Gers" name="region" value="Gers">
-                            <label for="Gers" class="form-check-label">Gers</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Gironde" name="region" value="Gironde">
-                            <label for="Gironde" class="form-check-label">Gironde</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Hérault" name="region" value="Hérault">
-                            <label for="Hérault" class="form-check-label">Hérault</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Ille-et-Vilaine" name="region"
-                                value="Ille-et-Vilaine">
-                            <label for="Ille-et-Vilaine" class="form-check-label">Ille-et-Vilaine</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Indre" name="region" value="Indre">
-                            <label for="Indre" class="form-check-label">Indre</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Indre-et-Loire" name="region"
-                                value="Indre-et-Loire">
-                            <label for="Indre-et-Loire" class="form-check-label">Indre-et-Loire</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Isère" name="region" value="Isère">
-                            <label for="Isère" class="form-check-label">Isère</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Jura" name="region" value="Jura">
-                            <label for="Jura" class="form-check-label">Jura</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Landes" name="region" value="Landes">
-                            <label for="Landes" class="form-check-label">Landes</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Loir-et-Cher" name="region"
-                                value="Loir-et-Cher">
-                            <label for="Loir-et-Cher" class="form-check-label">Loir-et-Cher</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Loire" name="region" value="Loire">
-                            <label for="Loire" class="form-check-label">Loire</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Haute-Loire" name="region"
-                                value="Haute-Loire">
-                            <label for="Haute-Loire" class="form-check-label">Haute-Loire</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Loire-Atlantique" name="region"
-                                value="Loire-Atlantique">
-                            <label for="Loire-Atlantique" class="form-check-label">Loire-Atlantique</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Loiret" name="region" value="Loiret">
-                            <label for="Loiret" class="form-check-label">Loiret</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Lot" name="region" value="Lot">
-                            <label for="Lot" class="form-check-label">Lot</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Lot-et-Garonne" name="region"
-                                value="Lot-et-Garonne">
-                            <label for="Lot-et-Garonne" class="form-check-label">Lot-et-Garonne</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Lozère" name="region" value="Lozère">
-                            <label for="Lozère" class="form-check-label">Lozère</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Maine-et-Loire" name="region"
-                                value="Maine-et-Loire">
-                            <label for="Maine-et-Loire" class="form-check-label">Maine-et-Loire</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Manche" name="region" value="Manche">
-                            <label for="Manche" class="form-check-label">Manche</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Marne" name="region" value="Marne">
-                            <label for="Marne" class="form-check-label">Marne</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Haute-Marne" name="region"
-                                value="Haute-Marne">
-                            <label for="Haute-Marne" class="form-check-label">Haute-Marne</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Mayenne" name="region" value="Mayenne">
-                            <label for="Mayenne" class="form-check-label">Mayenne</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Meurthe-et-Moselle" name="region"
-                                value="Meurthe-et-Moselle">
-                            <label for="Meurthe-et-Moselle" class="form-check-label">Meurthe-et-Moselle</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Meuse" name="region" value="Meuse">
-                            <label for="Meuse" class="form-check-label">Meuse</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Morbihan" name="region"
-                                value="Morbihan">
-                            <label for="Morbihan" class="form-check-label">Morbihan</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Moselle" name="region" value="Moselle">
-                            <label for="Moselle" class="form-check-label">Moselle</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Nièvre" name="region" value="Nièvre">
-                            <label for="Nièvre" class="form-check-label">Nièvre</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Nord" name="region" value="Nord">
-                            <label for="Nord" class="form-check-label">Nord</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Oise" name="region" value="Oise">
-                            <label for="Oise" class="form-check-label">Oise</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Orne" name="region" value="Orne">
-                            <label for="Orne" class="form-check-label">Orne</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Pas-de-Calais" name="region"
-                                value="Pas-de-Calais">
-                            <label for="Pas-de-Calais" class="form-check-label">Pas-de-Calais</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Puy-de-Dôme" name="region"
-                                value="Puy-de-Dôme">
-                            <label for="Puy-de-Dôme" class="form-check-label">Puy-de-Dôme</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Pyrénées-Atlantiques" name="region"
-                                value="Pyrénées-Atlantiques">
-                            <label for="Pyrénées-Atlantiques" class="form-check-label">Pyrénées-Atlantiques</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Hautes-Pyrénées" name="region"
-                                value="Hautes-Pyrénées">
-                            <label for="Hautes-Pyrénées" class="form-check-label">Hautes-Pyrénées</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Pyrénées-Orientales" name="region"
-                                value="Pyrénées-Orientales">
-                            <label for="Pyrénées-Orientales" class="form-check-label">Pyrénées-Orientales</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Bas-Rhin" name="region"
-                                value="Bas-Rhin">
-                            <label for="Bas-Rhin" class="form-check-label">Bas-Rhin</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Haut-Rhin" name="region"
-                                value="Haut-Rhin">
-                            <label for="Haut-Rhin" class="form-check-label">Haut-Rhin</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Rhône" name="region" value="Rhône">
-                            <label for="Rhône" class="form-check-label">Rhône</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Haute-Saône" name="region"
-                                value="Haute-Saône">
-                            <label for="Haute-Saône" class="form-check-label">Haute-Saône</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Saône-et-Loire" name="region"
-                                value="Saône-et-Loire">
-                            <label for="Saône-et-Loire" class="form-check-label">Saône-et-Loire</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Sarthe" name="region" value="Sarthe">
-                            <label for="Sarthe" class="form-check-label">Sarthe</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Savoie" name="region" value="Savoie">
-                            <label for="Savoie" class="form-check-label">Savoie</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Haute-Savoie" name="region"
-                                value="Haute-Savoie">
-                            <label for="Haute-Savoie" class="form-check-label">Haute-Savoie</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Paris" name="region" value="Paris">
-                            <label for="Paris" class="form-check-label">Paris</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Seine-Maritime" name="region"
-                                value="Seine-Maritime">
-                            <label for="Seine-Maritime" class="form-check-label">Seine-Maritime</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Seine-et-Marne" name="region"
-                                value="Seine-et-Marne">
-                            <label for="Seine-et-Marne" class="form-check-label">Seine-et-Marne</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Yvelines" name="region"
-                                value="Yvelines">
-                            <label for="Yvelines" class="form-check-label">Yvelines</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Deux-Sèvres" name="region"
-                                value="Deux-Sèvres">
-                            <label for="Deux-Sèvres" class="form-check-label">Deux-Sèvres</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Somme" name="region" value="Somme">
-                            <label for="Somme" class="form-check-label">Somme</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Tarn" name="region" value="Tarn">
-                            <label for="Tarn" class="form-check-label">Tarn</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Tarn-et-Garonne" name="region"
-                                value="Tarn-et-Garonne">
-                            <label for="Tarn-et-Garonne" class="form-check-label">Tarn-et-Garonne</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Var" name="region" value="Var">
-                            <label for="Var" class="form-check-label">Var</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Vaucluse" name="region"
-                                value="Vaucluse">
-                            <label for="Vaucluse" class="form-check-label">Vaucluse</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Vandée" name="region" value="Vandée">
-                            <label for="Vandée" class="form-check-label">Vandée</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Vienne" name="region" value="Vienne">
-                            <label for="Vienne" class="form-check-label">Vienne</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Haute-Vienne" name="region"
-                                value="Haute-Vienne">
-                            <label for="Haute-Vienne" class="form-check-label">Haute-Vienne</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Vosges" name="region" value="Vosges">
-                            <label for="Vosges" class="form-check-label">Vosges</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Yonne" name="region" value="Yonne">
-                            <label for="Yonne" class="form-check-label">Yonne</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Territoire de Belfort" name="region"
-                                value="Territoire de Belfort">
-                            <label for="Territoire de Belfort" class="form-check-label">Territoire de
-                                Belfort</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Essonne" name="region" value="Essonne">
-                            <label for="Essonne" class="form-check-label">Essonne</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Hauts-de-Seine" name="region"
-                                value="Hauts-de-Seine">
-                            <label for="Hauts-de-Seine" class="form-check-label">Hauts-de-Seine</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Seine-St-Denis" name="region"
-                                value="Seine-St-Denis">
-                            <label for="Seine-St-Denis" class="form-check-label">Seine-St-Denis</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Val-de-Marne" name="region"
-                                value="Val-de-Marne">
-                            <label for="Val-de-Marne" class="form-check-label">Val-de-Marne</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Val-D'Oise" name="region"
-                                value="Val-D'Oise">
-                            <label for="Val-D'Oise" class="form-check-label">Val-D'Oise</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Guadeloupe" name="region"
-                                value="Guadeloupe">
-                            <label for="Guadeloupe" class="form-check-label">Guadeloupe</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Martinique" name="region"
-                                value="Martinique">
-                            <label for="Martinique" class="form-check-label">Martinique</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Guyane" name="region" value="Guyane">
-                            <label for="Guyane" class="form-check-label">Guyane</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="La Réunion" name="region"
-                                value="La Réunion">
-                            <label for="La Réunion" class="form-check-label">La Réunion</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="Mayotte" name="region" value="Mayotte">
-                            <label for="Mayotte" class="form-check-label">Mayotte</label>
-                        </div>
-                    </div>
+                    <div class="p-0" name="regionList"></div>
                 </div>
 
                 <p>
@@ -767,219 +379,20 @@
                     </div>
                     <div id="slider-range"></div>
                 </div>
-            </div>
-        </div>
-        <div name="products-list" class="d-flex flex-wrap col-10">
-            <div class="col-lg-3 col-md-6 h-fit-content">
-                <div class="single-product position-relative">
-                    <input type="hidden" name="region" value="Seine-Maritime">
-                    <img class="img-fluid w-100" src="./wines/6K4A0477_533x.jpg" alt="">
-                    <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
-                        <div>
-                            <h5>WineName</h5>
-                            <div class="price">
-                                <h6>20€</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-end">
-                            <a name="buy-it" id="buy-it" class="p-2 btn btn-outline-primary" role="button">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 h-fit-content">
-                <div class="single-product position-relative">
-                    <input type="hidden" name="region" value="Seine-Maritime">
-                    <img class="img-fluid w-100" src="./wines/6K4A0477_533x.jpg" alt="">
-                    <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
-                        <div>
-                            <h5>WineName</h5>
-                            <div class="price">
-                                <h6>3.5€</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-end">
-                            <a name="buy-it" id="buy-it" class="p-2 btn btn-outline-primary" role="button">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 h-fit-content">
-                <div class="single-product position-relative">
-                    <input type="hidden" name="region" value="Seine-Maritime">
-                    <img class="img-fluid w-100" src="./wines/6K4A0477_533x.jpg" alt="">
-                    <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
-                        <div>
-                            <h5>WineName</h5>
-                            <div class="price">
-                                <h6>3.5€</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-end">
-                            <a name="buy-it" id="buy-it" class="p-2 btn btn-outline-primary" role="button">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 h-fit-content">
-                <div class="single-product position-relative">
-                    <input type="hidden" name="region" value="Ain">
-                    <img class="img-fluid w-100" src="./wines/6K4A0477_533x.jpg" alt="">
-                    <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
-                        <div>
-                            <h5>WineName</h5>
-                            <div class="price">
-                                <h6>3.5€</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-end">
-                            <a name="buy-it" id="buy-it" class="p-2 btn btn-outline-primary" role="button">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 h-fit-content">
-                <div class="single-product position-relative">
-                    <input type="hidden" name="region" value="Seine-Maritime">
-                    <img class="img-fluid w-100" src="./wines/6K4A0477_533x.jpg" alt="">
-                    <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
-                        <div>
-                            <h5>WineName</h5>
-                            <div class="price">
-                                <h6>3.5€</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-end">
-                            <a name="buy-it" id="buy-it" class="p-2 btn btn-outline-primary" role="button">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 h-fit-content">
-                <div class="single-product position-relative">
-                    <input type="hidden" name="region" value="Seine-Maritime">
-                    <img class="img-fluid w-100" src="./wines/6K4A0477_533x.jpg" alt="">
-                    <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
-                        <div>
-                            <h5>WineName</h5>
-                            <div class="price">
-                                <h6>3.5€</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-end">
-                            <a name="buy-it" id="buy-it" class="p-2 btn btn-outline-primary" role="button">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 h-fit-content">
-                <div class="single-product position-relative">
-                    <input type="hidden" name="region" value="Seine-Maritime">
-                    <img class="img-fluid w-100" src="./wines/6K4A0477_533x.jpg" alt="">
-                    <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
-                        <div>
-                            <h5>WineName</h5>
-                            <div class="price">
-                                <h6>3.5€</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-end">
-                            <a name="buy-it" id="buy-it" class="p-2 btn btn-outline-primary" role="button">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 h-fit-content">
-                <div class="single-product position-relative">
-                    <input type="hidden" name="region" value="Seine-Maritime">
-                    <img class="img-fluid w-100" src="./wines/6K4A0477_533x.jpg" alt="">
-                    <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
-                        <div>
-                            <h5>WineName</h5>
-                            <div class="price">
-                                <h6>3.5€</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-end">
-                            <a name="buy-it" id="buy-it" class="p-2 btn btn-outline-primary" role="button">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 h-fit-content">
-                <div class="single-product position-relative">
-                    <input type="hidden" name="region" value="Seine-Maritime">
-                    <img class="img-fluid w-100" src="./wines/6K4A0477_533x.jpg" alt="">
-                    <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
-                        <div>
-                            <h5>WineName</h5>
-                            <div class="price">
-                                <h6>3.5€</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-end">
-                            <a name="buy-it" id="buy-it" class="p-2 btn btn-outline-primary" role="button">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 h-fit-content">
-                <div class="single-product position-relative">
-                    <input type="hidden" name="region" value="Seine-Maritime">
-                    <img class="img-fluid w-100" src="./wines/6K4A0477_533x.jpg" alt="">
-                    <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
-                        <div>
-                            <h5>WineName</h5>
-                            <div class="price">
-                                <h6>3.5€</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-end">
-                            <a name="buy-it" id="buy-it" class="p-2 btn btn-outline-primary" role="button">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 h-fit-content">
-                <div class="single-product position-relative">
-                    <input type="hidden" name="region" value="Seine-Maritime">
-                    <img class="img-fluid w-100" src="./wines/6K4A0477_533x.jpg" alt="">
-                    <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
-                        <div>
-                            <h5>WineName</h5>
-                            <div class="price">
-                                <h6>3.5€</h6>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-end">
-                            <a name="buy-it" id="buy-it" class="p-2 btn btn-outline-primary" role="button">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy
-                            </a>
-                        </div>
-                    </div>
+
+                <p>
+                    <a class="d-flex justify-content-between" data-toggle="collapse" href="#producerFilter"
+                        role="button">
+                        <span>Producer</span><i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </a>
+                </p>
+                <div class="collapse" id="producerFilter">
+                    <input type="text" id="search-producer">
+                    <div class="p-0" name="producerList"></div>
                 </div>
             </div>
         </div>
+        <div name="products" class="d-flex flex-wrap col-10"></div>
     </section>
 </body>
 
