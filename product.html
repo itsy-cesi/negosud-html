@@ -69,19 +69,9 @@
         }
 
         make();
-
-        $(document).on('click', 'a[name="quantity"]', function () {
-            $('input[name="quantity"]').val(parseInt($('input[name="quantity"]').val()) + (($(this).attr('action') == 'remove') ? -($('input[name="quantity"]').val() != 1) : ($('input[name="quantity"]').val() != 255)));
-        })
-        $(document).on('blur', 'input[name="quantity"]', function () {
-            if (parseInt($('input[name="quantity"]').val()) < 1) {
-                $('input[name="quantity"]').val(1);
-            } else if (parseInt($('input[name="quantity"]').val()) >= 255) {
-                $('input[name="quantity"]').val(255)
-            }
-        });
     </script>
     <script src="/script/cart.js" defer></script>
+    <script src="/script/quantity.js" defer></script>
     <style>
         .h-inherit {
             width: inherit;
