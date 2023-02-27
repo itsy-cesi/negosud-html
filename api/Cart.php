@@ -8,7 +8,8 @@ $_SESSION['cart'] = $_SESSION['cart'] ?? array();
 if (!isset($_POST['function']))
   die(json_encode(array('error' => 'no function provided')));
 
-switch ($_POST['function']) {
+switch ($_POST['function'])
+{
   case 'delete_item':
     if (!isset($_POST['productId']))
       die(json_encode(array('error' => 'undefined product')));
@@ -26,7 +27,8 @@ switch ($_POST['function']) {
       die(json_encode(array('error' => 'no quantity provided')));
 
     $_SESSION['cart'][$_POST['productId']]['quantity'] = $_POST['quantity'];
-    if ($_SESSION['cart'][$_POST['productId']]['quantity'] == 0) {
+    if ($_SESSION['cart'][$_POST['productId']]['quantity'] == 0)
+    {
       $product = $_SESSION['cart'][$_POST['productId']]['product']->nomProduit;
 
       unset($_SESSION['cart'][$_POST['productId']]['quantity']);
@@ -40,7 +42,8 @@ switch ($_POST['function']) {
       die(json_encode(array('error' => 'undefined product')));
     if (!isset($_POST['quantity']))
       die(json_encode(array('error' => 'no quantity provided')));
-    if (!isset($_SESSION['cart'][$_POST['productId']])) {
+    if (!isset($_SESSION['cart'][$_POST['productId']]))
+    {
       $ch = curl_init("http://195.154.113.18:8000/api/Produits/" . $_POST['productId']);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
       curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -48,7 +51,9 @@ switch ($_POST['function']) {
       curl_close($ch);
       $_SESSION['cart'][$_POST['productId']] = array('quantity' => $_POST['quantity'], 'product' => $data);
       die(json_encode(array('success' => $data->nomProduit . ' added to cart', 'cart' => $_SESSION['cart'])));
-    } else {
+    }
+    else
+    {
       $_SESSION['cart'][$_POST['productId']]['quantity'] = $_SESSION['cart'][$_POST['productId']]['quantity'] + $_POST['quantity'];
       die(json_encode(array('success' => $data->nomProduit . ' quantity updated', 'cart' => $_SESSION['cart'])));
     }
@@ -69,9 +74,12 @@ switch ($_POST['function']) {
       die(json_encode(array('error' => 'no quantity provided')));
 
     $_SESSION['cart'][$_POST['productId']]['quantity'] = $_POST['quantity'];
-    if ($_POST['quantity'] > 0) {
+    if ($_POST['quantity'] > 0)
+    {
       die(json_encode(array('success' => $_SESSION['cart'][$_POST['productId']]['product']->nomProduit . ' quantity updated', 'cart' => $_SESSION['cart'], 'quantity' => array_sum(array_column($_SESSION['cart'], 'quantity')))));
-    } else {
+    }
+    else
+    {
       unset($_SESSION['cart'][$_POST['productId']]);
       die(json_encode(array('success' => 'product removed from cart', 'cart' => $_SESSION['cart'], 'quantity' => array_sum(array_column($_SESSION['cart'], 'quantity')))));
     }
