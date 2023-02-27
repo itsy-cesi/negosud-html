@@ -3,8 +3,8 @@
 
 <head>
     <?=!require('./cdn.php') ?>
-    <script src="/script/contact.js" defer></script>
     <script src="/script/loader.js" defer></script>
+    <script src="/script/contact.js" defer></script>
 </head>
 
 <body class="overflow-hidden">
@@ -21,11 +21,11 @@
                     <form id="contact">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control" id="email" name="to" required>
                         </div>
                         <div class="form-group">
                             <label for="object">Object</label>
-                            <input type="text" class="form-control" id="object" name="object" required>
+                            <input type="text" class="form-control" id="object" name="subject" required>
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>

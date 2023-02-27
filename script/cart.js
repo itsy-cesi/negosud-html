@@ -38,6 +38,7 @@ async function makeOffCanvas() {
 }
 
 async function makeList(cartList) {
+  console.log(cartList);
   $("#cartList").html("");
   if (Object.values(cartList.cart).length == 0) {
     $("#cartList").append(`
@@ -55,9 +56,7 @@ async function makeList(cartList) {
     $("#cartList").append(`
         <div class="d-flex" product-id="${product.id}">
             <div class="w-25">
-              <img src="${
-                product.imagePrincipal
-              }" class="w-100 ratio ratio-1x1">
+              <img src="http://127.0.0.1/wines/6K4A0480_533x.jpg" class="w-100 ratio ratio-1x1">
             </div>
             <div>
                 <h5action="delete">${
@@ -82,6 +81,11 @@ async function makeList(cartList) {
                     }€</h5>
                 </div>
             </div>
+        </div>
+        `);
+    $("#cartList").append(`
+        <div class="w-100 d-flex justify-content-center">
+                    <a id="checkout" class="btn btn-primary">Checkout</a>
         </div>
         `);
   });
@@ -175,8 +179,44 @@ $(document).ready(function () {
         function: "delete_item",
         productId: productId,
       },
-      success: function (response) {},
+      success: function (response) {
+        makeList(response);
+      },
     });
-    makeList();
+  });
+});
+
+$(document).on("click", "#checkout", async function (e) {
+  token = null;
+  e.preventDefault();
+  await $.ajax({
+    url: "/api/getToken.php",
+    type: "POST",
+    success: function ({ token: userToken }) {
+      if (!userToken) {
+        new Noty({
+          type: "error",
+          layout: "topRight",
+          text: "You need to be logged to checkout",
+        }).show();
+      } else {
+        token = userToken;
+      }
+    },
+  });
+
+  if (token == null) return;
+
+  $.ajax({
+    url: "/api/checkout.php",
+    type: "POST",
+    data: {
+      products: $(".offcanvas div[product-id]")
+        .map(function () {
+          return $(this).attr("product-id");
+        })
+        .get(),
+    },
+    success: function () {},
   });
 });

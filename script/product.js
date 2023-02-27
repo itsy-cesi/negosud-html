@@ -1,5 +1,5 @@
 async function make() {
-  const productId = window.location.search.split("/").pop();
+  productId = window.location.href.split("/").pop();
 
   await $.get(
     `http://195.154.113.18:8000/api/Produits/${productId}`,

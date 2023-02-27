@@ -2,7 +2,6 @@
 header('Content-Type: application/json; charset=utf-8');
 
 session_start();
-
 $_SESSION['cart'] = $_SESSION['cart'] ?? array();
 
 if (!isset($_POST['function']))
@@ -15,16 +14,16 @@ switch ($_POST['function'])
       die(json_encode(array('error' => 'undefined product')));
     if (!isset($_SESSION['cart'][$_POST['productId']]))
       die(json_encode(array('error' => 'product not in cart')));
-    $product = $_SESSION['cart'][$_POST['productId']]->nomProduit;
+    $product = $_SESSION['cart'][$_POST['productId']]['product']->nomProduit;
     unset($_SESSION['cart'][$_POST['productId']]);
-    die(json_encode(array('success' => $product . ' removed from cart')));
+    die(json_encode(array('success' => $product . ' removed from cart', 'quantity' => array_sum(array_column($_SESSION['cart'], 'quantity')), 'cart' => $_SESSION['cart'])));
   case 'update_item':
     if (!isset($_POST['productId']))
       die(json_encode(array('error' => 'undefined product')));
     if (!isset($_SESSION['cart'][$_POST['productId']]))
-      die(json_encode(array('error' => 'product not in cart')));
+      die(json_encode(array('error' => 'product not in cart', 'quantity' => array_sum(array_column($_SESSION['cart'], 'quantity')), 'cart' => $_SESSION['cart'])));
     if (!isset($_POST['quantity']))
-      die(json_encode(array('error' => 'no quantity provided')));
+      die(json_encode(array('error' => 'no quantity provided', 'quantity' => array_sum(array_column($_SESSION['cart'], 'quantity')), 'cart' => $_SESSION['cart'])));
 
     $_SESSION['cart'][$_POST['productId']]['quantity'] = $_POST['quantity'];
     if ($_SESSION['cart'][$_POST['productId']]['quantity'] == 0)
@@ -33,9 +32,8 @@ switch ($_POST['function'])
 
       unset($_SESSION['cart'][$_POST['productId']]['quantity']);
 
-      die(json_encode(array('success' => $product . ' removed from cart')));
+      die(json_encode(array('success' => $product . ' removed from cart', 'quantity' => array_sum(array_column($_SESSION['cart'], 'quantity')), 'cart' => $_SESSION['cart'])));
     }
-    die();
 
   case 'add_item':
     if (!isset($_POST['productId']))
@@ -55,7 +53,7 @@ switch ($_POST['function'])
     else
     {
       $_SESSION['cart'][$_POST['productId']]['quantity'] = $_SESSION['cart'][$_POST['productId']]['quantity'] + $_POST['quantity'];
-      die(json_encode(array('success' => $data->nomProduit . ' quantity updated', 'cart' => $_SESSION['cart'])));
+      die(json_encode(array('success' => $_SESSION['cart'][$_POST['productId']]['product']->nomProduit . ' quantity updated', 'cart' => $_SESSION['cart'])));
     }
 
   case 'get_cart':
