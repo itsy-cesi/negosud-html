@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="product-id" content="<?= $_GET['id'] ?>">
     <title>NégoSud</title>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js'
         integrity='sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A=='
@@ -49,8 +50,8 @@
         async function make() {
             const urlParams = new URLSearchParams(window.location.search);
 
-            await $.post('http://127.0.0.1/api/Produits/' + urlParams.get('id') + '.php', function (response) {
-                $('#productImage').attr('src', `${response.imagePrincipal}`);
+            await $.get('http://195.154.113.18:8000/api/Produits/' + $('meta[name="product-id"]').attr('content'), function (response) {
+                $('#productImage').attr('src', `http://127.0.0.1/wines/6K4A0480_533x.jpg`);
                 $('#productProducer').html(response.producteur)
                 $('#productName').html(response.nomProduit);
                 $('#productPrice').html(response.prix_unitaire);

@@ -79,7 +79,7 @@
         const listImage = ["6K4A0477_533x.jpg", "6K4A0483_533x.jpg", "6K4A0496_533x.jpg", "6K4A0507_533x.jpg", "6K4A0516_533x.jpg", "6K4A0534_533x.jpg", "6K4A0570_533x.jpg", "6K4A0814_533x.jpg", "6K4A0478_533x.jpg", "6K4A0489_533x.jpg", "6K4A0504_533x.jpg", "6K4A0513_533x.jpg", "6K4A0522_533x.jpg", "6K4A0536_533x.jpg", "6K4A0572_533x.jpg", "6K4A0829_533x.jpg", "6K4A0480_533x.jpg", "6K4A0493_533x.jpg", "6K4A0506_533x.jpg", "6K4A0514_533x.jpg", "6K4A0530_533x.jpg", "6K4A0550_533x.jpg", "6K4A0578_533x.jpg", "AmberBottleShop_ToutBu_Bottleneck_Fort_SOL_byTiesBemelmans-64copy_533x.jpg"]
 
         async function getProducts() {
-            await $.post('http://127.0.0.1/api/Produits.php', function (response) {
+            await $.get('http://195.154.113.18:8000/api/Produits/', function (response) {
                 const products = (response);
                 $('div[name="products"]').html();
                 products.forEach((product) => {
@@ -90,7 +90,7 @@
                             <input type="hidden" name="producer" value="${product.producteur}">
                             <input type="hidden" name="price" value="${product.prix_unitaire}">
                             <input type="hidden" name="id" value="${product.id}">
-                            <img class="img-fluid w-100" src="${product.imagePrincipal}" alt="">
+                            <img class="img-fluid w-100" src="/wines/6K4A0478_533x.jpg" alt="">
                             <div class="position-absolute bottom-0 left-0 p-3 w-100 d-flex justify-content-between">
                                 <div>
                                     <h5>${product.nomProduit}</h5>
