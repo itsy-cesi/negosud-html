@@ -20,6 +20,7 @@
                     data-bs-target="#v-pills-factures" type="button" role="tab">Factures</button>
                 <button class="nav-link" id="v-pills-adresses-tab" data-bs-toggle="pill"
                     data-bs-target="#v-pills-adresses" type="button" role="tab">Adresses</button>
+                <button class="btn btn-danger mt-5" onclick="document.location = '/api/logout.php'">Logout</button>
             </div>
             <div class="tab-content w-100" id="v-pills-tabContent">
                 <div class="tab-pane show active" id="v-pills-commandes" role="tabpanel" tabindex="0">
