@@ -1,5 +1,8 @@
 RewriteEngine On
+
+RewriteRule ^product/([0-9]+)/?$ /product?id=$1 [NC,L,QSA]
+
 RewriteRule ^(.+)/$ /$1 [L]
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.*)$ $1.html [L]
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php [L]
