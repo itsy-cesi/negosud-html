@@ -30,7 +30,7 @@ async function makeOffCanvas() {
             <h5 class="offcanvas-title" id="offcanvasRightLabel"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
-          <div class="offcanvas-body" id="cartList">
+          <div class="offcanvas-body h-100" id="cartList">
           </div>
         </div>
     `);
@@ -39,6 +39,16 @@ async function makeOffCanvas() {
 
 async function makeList(cartList) {
   $("#cartList").html("");
+  if (Object.values(cartList.cart).length == 0) {
+    $("#cartList").append(`
+      <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+        <div class="w-50">
+          <img class="w-100"src="https://img.icons8.com/stickers/100/null/nothing-found.png"/>
+          <p>Nothing in your cart from now</p>
+        </div>
+      </div>
+    `);
+  }
   Object.values(cartList.cart).forEach((item) => {
     product = item.product;
     quantity = item.quantity;
@@ -165,11 +175,8 @@ $(document).ready(function () {
         function: "delete_item",
         productId: productId,
       },
-      success: function (response) {
-        if (response.success) {
-          $(`#cartList div[product-id="${productId}"]`).remove();
-        }
-      },
+      success: function (response) {},
     });
+    makeList();
   });
 });
