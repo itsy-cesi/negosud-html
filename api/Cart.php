@@ -1,516 +1,79 @@
 <?php
-    $products = array(
-        '1' => array(
-          "id" => 1,
-          "sku" => "changé",
-          "nomProduit" => "changé",
-          "resumee" => "changé",
-          "description" => "changé",
-          "prix_unitaire" => 4.82,
-          "prix_carton" => 15.4,
-          "tva" => 5.14,
-          "remise" => 10.5,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0536_533x.jpg",
-          "ancien" => "2015",
-          "region" => "Canary Islands",
-          "couleur" => "changé",
-          "raisins" => "changé",
-          "alcool" => 15.5,
-          "aliments" => "très amer et acide",
-          "conservation" => "consummable jus 2029",
-          "expiration" => "2029",
-          "volume" => 4.3,
-          "dateCreation" => "2023-02-09T02:50:18",
-          "dateModification" => "2023-02-24T15:17:50.056296",
-          "producteurId" => 1,
-          "producteur" => "Addie",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '2' => array(
-          "id" => 2,
-          "sku" => "CDC5454",
-          "nomProduit" => "Fournisseur Vin blanc",
-          "resumee" => "smart here this gantis",
-          "description" => "that shit happens when the smart wenter faster minster faster",
-          "prix_unitaire" => 37.56,
-          "prix_carton" => 15.4,
-          "tva" => 5.14,
-          "remise" => 10.5,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0477_533x.jpg",
-          "ancien" => "2015",
-          "region" => "St. Barthélemy",
-          "couleur" => "Rouge Foncé",
-          "raisins" => "Frais récolté le jenvier 2022 à saint-loire",
-          "alcool" => 15.5,
-          "aliments" => "très amer et acide",
-          "conservation" => "consummable jusqu'a 2029",
-          "expiration" => "2029",
-          "volume" => 4.3,
-          "dateCreation" => "2023-02-09T02:50:18",
-          "dateModification" => "2023-02-09T02:50:18",
-          "producteurId" => 2,
-          "producteur" => "Mittie",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '3' => array(
-          "id" => 3,
-          "sku" => "FERLDE2",
-          "nomProduit" => "Morgon 2020",
-          "resumee" => "Morgon 2020 - COUP DE COEUR",
-          "description" => "Morgon 2020 - COUP DE COEUR - 2 étoiles au Guide Hachette des Vins 2022",
-          "prix_unitaire" => 3.95,
-          "prix_carton" => 230.2,
-          "tva" => 20,
-          "remise" => 10,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0578_533x.jpg",
-          "ancien" => "1942",
-          "region" => "Croatia",
-          "couleur" => "blanc",
-          "raisins" => "raisin blanc de chateau blanc ",
-          "alcool" => 20,
-          "aliments" => "raisins blanc",
-          "conservation" => "temparature 24 C° , pression 2 bar",
-          "expiration" => "conservation 2033",
-          "volume" => 1,
-          "dateCreation" => "2023-02-19T13:00:20.596",
-          "dateModification" => "2023-02-19T13:00:20.596",
-          "producteurId" => 1,
-          "producteur" => "Connor",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '4' => array(
-          "id" => 4,
-          "sku" => "FERLDE2",
-          "nomProduit" => "Morgon 2020",
-          "resumee" => "Morgon 2020 - COUP DE COEUR",
-          "description" => "Morgon 2020 - COUP DE COEUR - 2 étoiles au Guide Hachette des Vins 2022",
-          "prix_unitaire" => 25.91,
-          "prix_carton" => 230.2,
-          "tva" => 20,
-          "remise" => 10,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0536_533x.jpg",
-          "ancien" => "1942",
-          "region" => "Azerbaijan",
-          "couleur" => "blanc",
-          "raisins" => "raisin blanc de chateau blanc ",
-          "alcool" => 20,
-          "aliments" => "raisins blanc",
-          "conservation" => "temparature 24 C° , pression 2 bar",
-          "expiration" => "conservation 2033",
-          "volume" => 1,
-          "dateCreation" => "2023-02-19T13:00:20.596",
-          "dateModification" => "2023-02-19T13:00:20.596",
-          "producteurId" => 1,
-          "producteur" => "Olive",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '5' => array(
-          "id" => 5,
-          "sku" => "FERLDE2",
-          "nomProduit" => "Morgon 2020",
-          "resumee" => "Morgon 2020 - COUP DE COEUR",
-          "description" => "Morgon 2020 - COUP DE COEUR - 2 étoiles au Guide Hachette des Vins 2022",
-          "prix_unitaire" => 42.39,
-          "prix_carton" => 230.2,
-          "tva" => 20,
-          "remise" => 10,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0550_533x.jpg",
-          "ancien" => "1942",
-          "region" => "Niger",
-          "couleur" => "blanc",
-          "raisins" => "raisin blanc de chateau blanc ",
-          "alcool" => 20,
-          "aliments" => "raisins blanc",
-          "conservation" => "temparature 24 C° , pression 2 bar",
-          "expiration" => "conservation 2033",
-          "volume" => 1,
-          "dateCreation" => "2023-02-19T13:00:20.596",
-          "dateModification" => "2023-02-19T13:00:20.596",
-          "producteurId" => 1,
-          "producteur" => "Zachary",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '6' => array(
-          "id" => 6,
-          "sku" => "FERLDE2",
-          "nomProduit" => "Morgon 2020",
-          "resumee" => "Morgon 2020 - COUP DE COEUR",
-          "description" => "Morgon 2020 - COUP DE COEUR - 2 étoiles au Guide Hachette des Vins 2022",
-          "prix_unitaire" => 28.98,
-          "prix_carton" => 230.2,
-          "tva" => 20,
-          "remise" => 10,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0829_533x.jpg",
-          "ancien" => "1942",
-          "region" => "Kuwait",
-          "couleur" => "blanc",
-          "raisins" => "raisin blanc de chateau blanc ",
-          "alcool" => 20,
-          "aliments" => "raisins blanc",
-          "conservation" => "temparature 24 C° , pression 2 bar",
-          "expiration" => "conservation 2033",
-          "volume" => 1,
-          "dateCreation" => "2023-02-19T13:00:20.596",
-          "dateModification" => "2023-02-19T13:00:20.596",
-          "producteurId" => 1,
-          "producteur" => "Willie",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '7' => array(
-          "id" => 7,
-          "sku" => "FERLDE2",
-          "nomProduit" => "Morgon 2020",
-          "resumee" => "Morgon 2020 - COUP DE COEUR",
-          "description" => "Morgon 2020 - COUP DE COEUR - 2 étoiles au Guide Hachette des Vins 2022",
-          "prix_unitaire" => 40.67,
-          "prix_carton" => 230.2,
-          "tva" => 20,
-          "remise" => 10,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0507_533x.jpg",
-          "ancien" => "1942",
-          "region" => "Nicaragua",
-          "couleur" => "blanc",
-          "raisins" => "raisin blanc de chateau blanc ",
-          "alcool" => 20,
-          "aliments" => "raisins blanc",
-          "conservation" => "temparature 24 C° , pression 2 bar",
-          "expiration" => "conservation 2033",
-          "volume" => 1,
-          "dateCreation" => "2023-02-19T13:00:20.596",
-          "dateModification" => "2023-02-19T13:00:20.596",
-          "producteurId" => 1,
-          "producteur" => "Ina",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '8' => array(
-          "id" => 8,
-          "sku" => "FERLDE2",
-          "nomProduit" => "Morgon 2020",
-          "resumee" => "Morgon 2020 - COUP DE COEUR",
-          "description" => "Morgon 2020 - COUP DE COEUR - 2 étoiles au Guide Hachette des Vins 2022",
-          "prix_unitaire" => 18.09,
-          "prix_carton" => 230.2,
-          "tva" => 20,
-          "remise" => 10,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0489_533x.jpg",
-          "ancien" => "1942",
-          "region" => "Australia",
-          "couleur" => "blanc",
-          "raisins" => "raisin blanc de chateau blanc ",
-          "alcool" => 20,
-          "aliments" => "raisins blanc",
-          "conservation" => "temparature 24 C° , pression 2 bar",
-          "expiration" => "conservation 2033",
-          "volume" => 1,
-          "dateCreation" => "2023-02-19T13:00:20.596",
-          "dateModification" => "2023-02-19T13:00:20.596",
-          "producteurId" => 1,
-          "producteur" => "Sophia",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '9' => array(
-          "id" => 9,
-          "sku" => "FERLDE2",
-          "nomProduit" => "Morgon 2020",
-          "resumee" => "Morgon 2020 - COUP DE COEUR",
-          "description" => "Morgon 2020 - COUP DE COEUR - 2 étoiles au Guide Hachette des Vins 2022",
-          "prix_unitaire" => 42.00,
-          "prix_carton" => 230.2,
-          "tva" => 20,
-          "remise" => 10,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0483_533x.jpg",
-          "ancien" => "1942",
-          "region" => "Burkina Faso",
-          "couleur" => "blanc",
-          "raisins" => "raisin blanc de chateau blanc ",
-          "alcool" => 20,
-          "aliments" => "raisins blanc",
-          "conservation" => "temparature 24 C° , pression 2 bar",
-          "expiration" => "conservation 2033",
-          "volume" => 1,
-          "dateCreation" => "2023-02-19T13:00:20.596",
-          "dateModification" => "2023-02-19T13:00:20.596",
-          "producteurId" => 1,
-          "producteur" => "David",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '10' => array(
-          "id" => 10,
-          "sku" => "FERLDE2",
-          "nomProduit" => "Morgon 2020",
-          "resumee" => "Morgon 2020 - COUP DE COEUR",
-          "description" => "Morgon 2020 - COUP DE COEUR - 2 étoiles au Guide Hachette des Vins 2022",
-          "prix_unitaire" => 37.18,
-          "prix_carton" => 230.2,
-          "tva" => 20,
-          "remise" => 10,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0496_533x.jpg",
-          "ancien" => "1942",
-          "region" => "Comoros",
-          "couleur" => "blanc",
-          "raisins" => "raisin blanc de chateau blanc ",
-          "alcool" => 20,
-          "aliments" => "raisins blanc",
-          "conservation" => "temparature 24 C° , pression 2 bar",
-          "expiration" => "conservation 2033",
-          "volume" => 1,
-          "dateCreation" => "2023-02-19T13:00:20.596",
-          "dateModification" => "2023-02-19T13:00:20.596",
-          "producteurId" => 1,
-          "producteur" => "Eric",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '11' => array(
-          "id" => 11,
-          "sku" => "FERLDE2",
-          "nomProduit" => "Morgon 2020",
-          "resumee" => "Morgon 2020 - COUP DE COEUR",
-          "description" => "Morgon 2020 - COUP DE COEUR - 2 étoiles au Guide Hachette des Vins 2022",
-          "prix_unitaire" => 46.46,
-          "prix_carton" => 230.2,
-          "tva" => 20,
-          "remise" => 10,
-          "imagePrincipal" => "http://127.0.0.1/wines/AmberBottleShop_ToutBu_Bottleneck_Fort_SOL_byTiesBemelmans-64copy_533x.jpg",
-          "ancien" => "1942",
-          "region" => "Venezuela",
-          "couleur" => "blanc",
-          "raisins" => "raisin blanc de chateau blanc ",
-          "alcool" => 20,
-          "aliments" => "raisins blanc",
-          "conservation" => "temparature 24 C° , pression 2 bar",
-          "expiration" => "conservation 2033",
-          "volume" => 1,
-          "dateCreation" => "2023-02-19T13:00:20.596",
-          "dateModification" => "2023-02-19T13:00:20.596",
-          "producteurId" => 1,
-          "producteur" => "Marguerite",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '12' => array(
-          "id" => 12,
-          "sku" => "FERLDE2",
-          "nomProduit" => "Morgon 2020",
-          "resumee" => "Morgon 2020 - COUP DE COEUR",
-          "description" => "Morgon 2020 - COUP DE COEUR - 2 étoiles au Guide Hachette des Vins 2022",
-          "prix_unitaire" => 34.17,
-          "prix_carton" => 230.2,
-          "tva" => 20,
-          "remise" => 10,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0507_533x.jpg",
-          "ancien" => "1942",
-          "region" => "Micronesia",
-          "couleur" => "blanc",
-          "raisins" => "raisin blanc de chateau blanc ",
-          "alcool" => 20,
-          "aliments" => "raisins blanc",
-          "conservation" => "temparature 24 C° , pression 2 bar",
-          "expiration" => "conservation 2033",
-          "volume" => 1,
-          "dateCreation" => "2023-02-19T13:00:20.596",
-          "dateModification" => "2023-02-19T13:00:20.596",
-          "producteurId" => 1,
-          "producteur" => "Clifford",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '13' => array(
-          "id" => 13,
-          "sku" => "FERLDE2",
-          "nomProduit" => "Morgon 2020",
-          "resumee" => "Morgon 2020 - COUP DE COEUR",
-          "description" => "Morgon 2020 - COUP DE COEUR - 2 étoiles au Guide Hachette des Vins 2022",
-          "prix_unitaire" => 31.49,
-          "prix_carton" => 230.2,
-          "tva" => 20,
-          "remise" => 10,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0478_533x.jpg",
-          "ancien" => "1942",
-          "region" => "U.S. Outlying Islands",
-          "couleur" => "blanc",
-          "raisins" => "raisin blanc de chateau blanc ",
-          "alcool" => 20,
-          "aliments" => "raisins blanc",
-          "conservation" => "temparature 24 C° , pression 2 bar",
-          "expiration" => "conservation 2033",
-          "volume" => 1,
-          "dateCreation" => "2023-02-19T13:00:20.596",
-          "dateModification" => "2023-02-19T13:00:20.596",
-          "producteurId" => 1,
-          "producteur" => "Martha",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '14' => array(
-          "id" => 14,
-          "sku" => "FERLDE2",
-          "nomProduit" => "Morgon 2020",
-          "resumee" => "Morgon 2020 - COUP DE COEUR",
-          "description" => "Morgon 2020 - COUP DE COEUR - 2 étoiles au Guide Hachette des Vins 2022",
-          "prix_unitaire" => 21.45,
-          "prix_carton" => 230.2,
-          "tva" => 20,
-          "remise" => 10,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0489_533x.jpg",
-          "ancien" => "1942",
-          "region" => "Germany",
-          "couleur" => "blanc",
-          "raisins" => "raisin blanc de chateau blanc ",
-          "alcool" => 20,
-          "aliments" => "raisins blanc",
-          "conservation" => "temparature 24 C° , pression 2 bar",
-          "expiration" => "conservation 2033",
-          "volume" => 1,
-          "dateCreation" => "2023-02-19T13:00:20.596",
-          "dateModification" => "2023-02-19T13:00:20.596",
-          "producteurId" => 1,
-          "producteur" => "Sally",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '15' => array(
-          "id" => 15,
-          "sku" => "FERLDE2",
-          "nomProduit" => "Morgon 2020",
-          "resumee" => "Morgon 2020 - COUP DE COEUR",
-          "description" => "Morgon 2020 - COUP DE COEUR - 2 étoiles au Guide Hachette des Vins 2022",
-          "prix_unitaire" => 27.72,
-          "prix_carton" => 230.2,
-          "tva" => 20,
-          "remise" => 10,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0483_533x.jpg",
-          "ancien" => "1942",
-          "region" => "Timor-Leste",
-          "couleur" => "blanc",
-          "raisins" => "raisin blanc de chateau blanc ",
-          "alcool" => 20,
-          "aliments" => "raisins blanc",
-          "conservation" => "temparature 24 C° , pression 2 bar",
-          "expiration" => "conservation 2033",
-          "volume" => 1,
-          "dateCreation" => "2023-02-19T13:00:20.596",
-          "dateModification" => "2023-02-19T13:00:20.596",
-          "producteurId" => 1,
-          "producteur" => "William",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '16' => array(
-          "id" => 16,
-          "sku" => "FERLDE2",
-          "nomProduit" => "Morgon 2020",
-          "resumee" => "Morgon 2020 - COUP DE COEUR",
-          "description" => "Morgon 2020 - COUP DE COEUR - 2 étoiles au Guide Hachette des Vins 2022",
-          "prix_unitaire" => 13.87,
-          "prix_carton" => 230.2,
-          "tva" => 20,
-          "remise" => 10,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0480_533x.jpg",
-          "ancien" => "1942",
-          "region" => "British Virgin Islands",
-          "couleur" => "blanc",
-          "raisins" => "raisin blanc de chateau blanc ",
-          "alcool" => 20,
-          "aliments" => "raisins blanc",
-          "conservation" => "temparature 24 C° , pression 2 bar",
-          "expiration" => "conservation 2033",
-          "volume" => 1,
-          "dateCreation" => "2023-02-19T13:00:20.596",
-          "dateModification" => "2023-02-19T13:00:20.596",
-          "producteurId" => 1,
-          "producteur" => "Angel",
-          "categorieId" => 1,
-          "categorie" => null
-        ),
-        '17' => array(
-          "id" => 17,
-          "sku" => "FERLDE2",
-          "nomProduit" => "Morgon 2020",
-          "resumee" => "Morgon 2020 - COUP DE COEUR",
-          "description" => "Morgon 2020 - COUP DE COEUR - 2 étoiles au Guide Hachette des Vins 2022",
-          "prix_unitaire" => 7.34,
-          "prix_carton" => 230.2,
-          "tva" => 20,
-          "remise" => 10,
-          "imagePrincipal" => "http://127.0.0.1/wines/6K4A0516_533x.jpg",
-          "ancien" => "1942",
-          "region" => "Uzbekistan",
-          "couleur" => "blanc",
-          "raisins" => "raisin blanc de chateau blanc ",
-          "alcool" => 20,
-          "aliments" => "raisins blanc",
-          "conservation" => "temparature 24 C° , pression 2 bar",
-          "expiration" => "conservation 2033",
-          "volume" => 1,
-          "dateCreation" => "2023-02-19T13:00:20.596",
-          "dateModification" => "2023-02-19T13:00:20.596",
-          "producteurId" => 1,
-          "producteur" => "Lula",
-          "categorieId" => 1,
-          "categorie" => null
-        )
-    );
+header('Content-Type: application/json; charset=utf-8');
 
-    header('Content-Type: application/json; charset=utf-8');
+session_start();
 
-    session_start();
+$_SESSION['cart'] = $_SESSION['cart'] ?? array();
 
-    if (!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
+if (!isset($_POST['function']))
+  die(json_encode(array('error' => 'no function provided')));
 
-    if (!isset($_POST['function'])) die(json_encode(array('error'=>'no function provided')));
+switch ($_POST['function']) {
+  case 'delete_item':
+    if (!isset($_POST['productId']))
+      die(json_encode(array('error' => 'undefined product')));
+    if (!isset($_SESSION['cart'][$_POST['productId']]))
+      die(json_encode(array('error' => 'product not in cart')));
+    $product = $_SESSION['cart'][$_POST['productId']]->nomProduit;
+    unset($_SESSION['cart'][$_POST['productId']]);
+    die(json_encode(array('success' => $product . ' removed from cart')));
+  case 'update_item':
+    if (!isset($_POST['productId']))
+      die(json_encode(array('error' => 'undefined product')));
+    if (!isset($_SESSION['cart'][$_POST['productId']]))
+      die(json_encode(array('error' => 'product not in cart')));
+    if (!isset($_POST['quantity']))
+      die(json_encode(array('error' => 'no quantity provided')));
 
-    switch ($_POST['function']) {
-        case 'add_item':
-            if (!isset($_POST['productId'])) die(json_encode(array('error'=>'no item provided')));
+    $_SESSION['cart'][$_POST['productId']]['quantity'] = $_POST['quantity'];
+    if ($_SESSION['cart'][$_POST['productId']]['quantity'] == 0) {
+      $product = $_SESSION['cart'][$_POST['productId']]['product']->nomProduit;
 
-    if (!isset($products[$_POST['productId']])) die(json_encode(array('error'=>'unknown item')));
-            $_POST['quantity'] = $_POST['quantity'] ?? 1;
-            if (!isset($_SESSION['cart'][$_POST['productId']])){
-                $_SESSION['cart'][$_POST['productId']] = array(
-                    "quantity" => $_POST['quantity'],
-                    "product" => $products[$_POST['productId']]);
-                $response = json_encode(array('success' => $_SESSION['cart'][$_POST['productId']]['product']['nomProduit']. " added to cart", 'quantity' => array_sum(array_column($_SESSION['cart'], "quantity"))));
-                die($response);
-            } else {
-                $_SESSION['cart'][$_POST['productId']]['quantity'] = ($_SESSION['cart'][$_POST['productId']]['quantity'] + $_POST['quantity']);
-                die(json_encode(array('quantity' => array_sum(array_column($_SESSION['cart'], "quantity")), 'success' => 'Quantity updated')));
-            }
-            break;
+      unset($_SESSION['cart'][$_POST['productId']]['quantity']);
 
-        case 'remove_item':
-            if (!isset($_POST['productId'])) die(json_encode(array('error'=>'no item provided')));
-
-    if (!isset($products[$_POST['productId']])) die(json_encode(array('error'=>'unknown item')));
-            if (!isset($_SESSION['cart'][$_POST['productId']])){
-                die(json_encode(array('error' => 'product not in cart')));
-            } else if ($_SESSION['cart'][$_POST['productId']]['quantity'] == 1) {
-                $response = json_encode(array('quantity' => array_sum(array_column($_SESSION['cart'], "quantity")), 'success' => $_SESSION['cart'][$_POST['productId']]['product']['nomProduit']. " removed from cart"));
-                unset($_SESSION['cart'][$_POST['productId']]);
-                die($response);
-            } else {
-                $_SESSION['cart'][$_POST['productId']]['quantity'] = ($_SESSION['cart'][$_POST['productId']]['quantity'] - 1);
-                die(json_encode(array('quantity' => array_sum(array_column($_SESSION['cart'], "quantity")), 'success' => 'Quantity updated')));
-            }
-            break;
-        case 'get_cart':
-            die(json_encode(array("products" => $_SESSION['cart'], 'quantity' => array_sum(array_column($_SESSION['cart'], "quantity")))));
-            break;
-        case 'reset_cart':
-            $_SESSION['cart'] = array();
-            die(json_encode(array('success' => 'cart have been cleared', 'quantity' => 0)));
-            break;
-        default:
-            die(json_encode(array('error'=>'undefined function')));
-            break;
+      die(json_encode(array('success' => $product . ' removed from cart')));
     }
+    die();
+
+  case 'add_item':
+    if (!isset($_POST['productId']))
+      die(json_encode(array('error' => 'undefined product')));
+    if (!isset($_POST['quantity']))
+      die(json_encode(array('error' => 'no quantity provided')));
+    if (!isset($_SESSION['cart'][$_POST['productId']])) {
+      $ch = curl_init("http://195.154.113.18:8000/api/Produits/" . $_POST['productId']);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($ch, CURLOPT_HEADER, 0);
+      $data = json_decode(curl_exec($ch));
+      curl_close($ch);
+      $_SESSION['cart'][$_POST['productId']] = array('quantity' => $_POST['quantity'], 'product' => $data);
+      die(json_encode(array('success' => $data->nomProduit . ' added to cart', 'cart' => $_SESSION['cart'])));
+    } else {
+      $_SESSION['cart'][$_POST['productId']]['quantity'] = $_SESSION['cart'][$_POST['productId']]['quantity'] + $_POST['quantity'];
+      die(json_encode(array('success' => $data->nomProduit . ' quantity updated', 'cart' => $_SESSION['cart'])));
+    }
+
+  case 'get_cart':
+    die(
+      json_encode(
+        array(
+          'quantity' => array_sum(array_column($_SESSION['cart'], 'quantity')),
+          'cart' => $_SESSION['cart']
+        )
+      )
+    );
+  case 'update_cart':
+    if (!isset($_POST['productId']))
+      die(json_encode(array('error' => 'undefined product')));
+    if (!isset($_POST['quantity']))
+      die(json_encode(array('error' => 'no quantity provided')));
+
+    $_SESSION['cart'][$_POST['productId']]['quantity'] = $_POST['quantity'];
+    if ($_POST['quantity'] > 0) {
+      die(json_encode(array('success' => $_SESSION['cart'][$_POST['productId']]['product']->nomProduit . ' quantity updated', 'cart' => $_SESSION['cart'], 'quantity' => array_sum(array_column($_SESSION['cart'], 'quantity')))));
+    } else {
+      unset($_SESSION['cart'][$_POST['productId']]);
+      die(json_encode(array('success' => 'product removed from cart', 'cart' => $_SESSION['cart'], 'quantity' => array_sum(array_column($_SESSION['cart'], 'quantity')))));
+    }
+}
 ?>

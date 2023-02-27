@@ -6,6 +6,7 @@ async function updateCart(response) {
   } else {
     $("#badgeCart").removeClass("d-none");
   }
+  makeList(response);
 }
 
 async function getCart() {
@@ -17,7 +18,6 @@ async function getCart() {
       function: "get_cart",
     },
     success: function (response) {
-      updateCart(response);
       cart = response;
     },
   });
@@ -34,33 +34,42 @@ async function makeOffCanvas() {
           </div>
         </div>
     `);
-  makeList();
+  updateCart(await getCart());
 }
 
-async function makeList() {
-  const cartList = await getCart();
-  $("#cartList").html();
-  Object.values(cartList.products).forEach((item) => {
+async function makeList(cartList) {
+  $("#cartList").html("");
+  Object.values(cartList.cart).forEach((item) => {
     product = item.product;
     quantity = item.quantity;
     $("#cartList").append(`
-        <div class="d-flex">
-            <img src="${product.imagePrincipal}" class="w-25">
+        <div class="d-flex" product-id="${product.id}">
+            <div class="w-25">
+              <img src="${
+                product.imagePrincipal
+              }" class="w-100 ratio ratio-1x1">
+            </div>
             <div>
-                <h5>${product.nomProduit}</h5><div class="d-flex">
+                <h5action="delete">${
+                  product.nomProduit
+                }</h5action=><div class="d-flex">
                 <div class="w-50 p-4">
                     <div class="input-group d-flex mt-3">
-                        <a style="flex: 1;" class="btn btn-primary" name="quantity" product-id="${product.id}" offcanvas="true" action="remove" role="button">-</a>
-                        <input style="flex: 1;" type="number" name="quantity" class="form-control text-center" value="${quantity}" min="1">
-                        <a style="flex: 1;" class="btn btn-primary" name="quantity" product-id="${product.id}" offcanvas="true" action="add" role="button">+</a>
+                        <input style="flex: 1;" type="number" name="quantity" offcanvas="true" class="form-control text-center" value="${quantity}" product-id="${
+      product.id
+    }">
                     </div>
                     <div>
-                        <a class="btn btn-danger" product-id="${product.id}" action="delete" name="quantity"><i class="fa fa-trash" aria-hidden="true"></i> Delete item</a>
+                        <a class="btn btn-danger" product-id="${
+                          product.id
+                        }" action="delete" name="quantity"><i class="fa fa-trash" aria-hidden="true"></i> Delete item</a>
                     </div>
                 </div>
                 <div class="d-flex flex-column">
-                    <h5>Unit: >${product.prix_unitaire}</h5>
-                    <h5>Total: ${product.prix_unitaire}</h5>
+                    <h5>Unit: ${product.prix_unitaire}€</h5>
+                    <h5>Total: ${
+                      Math.round(product.prix_unitaire * quantity * 100) / 100
+                    }€</h5>
                 </div>
             </div>
         </div>
@@ -139,12 +148,28 @@ async function removeCart(productId, quantity = 1) {
 }
 $(document).ready(function () {
   makeOffCanvas();
-  getCart();
   $(document).on("click", "#buy-it", async function () {
     let qtt = await addCart(
       $(this).attr("product-id"),
       $('input[name="quantity"]').val()
     );
-    updateCart({ quantity: qtt });
+
+    updateCart(await getCart());
+  });
+  $(document).on("click", '*[action="delete"]', async function () {
+    const productId = $(this).attr("product-id");
+    await $.ajax({
+      url: "/api/Cart.php",
+      method: "POST",
+      data: {
+        function: "delete_item",
+        productId: productId,
+      },
+      success: function (response) {
+        if (response.success) {
+          $(`#cartList div[product-id="${productId}"]`).remove();
+        }
+      },
+    });
   });
 });

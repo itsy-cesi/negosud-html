@@ -146,11 +146,9 @@
                 </div>
                 <div>
                     <h4>Quantity</h4>
-                    <div class="input-group mb-3 d-flex w-50 p-5 mt-5 pt-0">
-                        <a style="flex: 1;" class="btn btn-primary" name="quantity" action="remove" role="button">-</a>
+                    <div class="input-group mb-3 d-flex w-25 p-5 mt-5 pt-0">
                         <input style="flex: 1;" type="number" name="quantity" class="form-control text-center" value="1"
                             min="1">
-                        <a style="flex: 1;" class="btn btn-primary" name="quantity" action="add" role="button">+</a>
                     </div>
                 </div>
                 <div>
