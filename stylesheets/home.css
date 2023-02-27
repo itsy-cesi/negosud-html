@@ -1,0 +1,25 @@
+*[name="cepage_show"] {
+    transition: 0.5s;
+}
+
+*[name="cepage_show"]:hover {
+    flex: 2 !important;
+}
+
+*[name="cepage_show"] div:last-of-type {
+    transition: 0.5s;
+}
+
+*[name="cepage_show"]:hover div:last-of-type {
+    margin-bottom: 2em;
+}
+
+@media only screen and (max-width: 1200px) {
+    *[name="cepage_show"] {
+        flex: 50% !important;
+    }
+
+    *[name="history"]>*:has(img) {
+        display: none;
+    }
+}

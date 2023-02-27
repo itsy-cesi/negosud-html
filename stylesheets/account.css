@@ -1,0 +1,12 @@
+.h-inherit {
+    width: inherit;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button,
+input[type=number] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
+}

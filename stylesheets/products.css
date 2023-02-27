@@ -1,0 +1,26 @@
+@media only screen and (max-width: 1200px) {
+    li:has(*[name="product-description"]) {
+        flex: 40% !important;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    *[name="suggestion"] {
+        width: 90% !important;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    li:has(*[name="product-description"]) {
+        flex: 90% !important;
+        margin: auto !important;
+    }
+
+    *[name="suggestion"] {
+        width: 100% !important;
+    }
+}
+
+.h-fit-content {
+    height: fit-content;
+}
