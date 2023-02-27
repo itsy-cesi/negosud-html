@@ -1,8 +1,12 @@
 RewriteEngine On
 
-RewriteRule ^product/([0-9]+)/?$ /product?id=$1 [NC,L,QSA]
-
-RewriteRule ^(.+)/$ /$1 [L]
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [L,R=301]
+
 RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^(.*)$ $1.php [L]
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+RewriteCond %{QUERY_STRING} ^id=([0-9]+)$
+RewriteRule ^product\.php$ /product/%1? [NC,R,L]
+
+RewriteRule ^product/([0-9]+)/?$ product.php?id=$1 [NC,L]
