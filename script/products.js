@@ -31,7 +31,7 @@ async function getProducts() {
     $('div[name="products"]').html();
     products.forEach((product) => {
       const item = `
-                    <div class="col-lg-3 col-md-6 h-fit-content">
+                    <a href="/product/${product.id}" class="col-lg-3 col-md-6 h-fit-content">
                         <div class="single-product position-relative">
                             <input type="hidden" name="region" value="${product.region}">
                             <input type="hidden" name="producer" value="${product.producteur}">
@@ -47,14 +47,14 @@ async function getProducts() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     `;
       $('div[name="products"]').append(item);
     });
   });
 }
-function getRegion() {
-  const regionList = [
+async function getRegion() {
+  const regionList = await [
     ...new Set(
       $('input[name="region"]')
         .map(function () {
@@ -63,7 +63,7 @@ function getRegion() {
         .get()
     ),
   ];
-  regionList.forEach((region) => {
+  await regionList.forEach((region) => {
     const item = `<div class="form-check"><input class="form-check-input" type="checkbox" id="${region}" name="region" value="${region}"><label for="${region}" class="form-check-label">${region}</label></div>`;
     $('div[name="regionList"]').append(item);
   });
@@ -111,16 +111,41 @@ function filter() {
         ),
       price < priceMin || price > priceMax,
     ];
-
+    console.log(filters);
     if (!filters.every((element) => element === false)) {
       $(this).parent().addClass("d-none");
     }
   });
 }
+async function makeFilter() {
+  const priceArray = $(".price h6")
+    .map(function () {
+      return parseFloat($(this).html());
+    })
+    .get();
+  console.log($(".price h6"));
+  const minPrice = Math.floor(Math.min(...priceArray));
+  const maxPrice = Math.ceil(Math.max(...priceArray));
+  $("#slider-range").slider({
+    range: true,
+    min: minPrice,
+    max: maxPrice,
+    values: [minPrice, maxPrice],
+    slide: function (event, ui) {
+      $("#priceFilter .min").html(ui.values[0]);
+      $("#priceFilter .max").html(ui.values[1]);
+      filter();
+    },
+  });
+  $("#priceFilter .min").html(minPrice);
+  $("#priceFilter .max").html(maxPrice);
+}
 async function makePage() {
   await getProducts();
   await getRegion();
   await getProducer();
+  await makeFilter();
+
   $("#loader").addClass("d-none");
   $("body").removeClass("overflow-hidden");
 }
@@ -162,30 +187,4 @@ $(document).ready(() => {
   $(document).on("click", 'input[name="producer"]', () => {
     filter();
   });
-  $(document).on("click", ".single-product", (e) => {
-    e.preventDefault();
-    const target = e.currentTarget;
-    document.location =
-      "http://127.0.0.1/product?id=" + $(target).find('input[name="id"]').val();
-  });
-  const priceArray = $(".price h6")
-    .map(function () {
-      return parseFloat($(this).html());
-    })
-    .get();
-  const minPrice = Math.floor(Math.min(...priceArray));
-  const maxPrice = Math.ceil(Math.max(...priceArray));
-  $("#slider-range").slider({
-    range: true,
-    min: minPrice,
-    max: maxPrice,
-    values: [minPrice, maxPrice],
-    slide: function (event, ui) {
-      $("#priceFilter .min").html(ui.values[0]);
-      $("#priceFilter .max").html(ui.values[1]);
-      filter();
-    },
-  });
-  $("#priceFilter .min").html(minPrice);
-  $("#priceFilter .max").html(maxPrice);
 });
