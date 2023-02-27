@@ -1,9 +1,8 @@
 async function make() {
-  const urlParams = new URLSearchParams(window.location.search);
+  const productId = window.location.search.split("/").pop();
 
   await $.get(
-    "http://195.154.113.18:8000/api/Produits/" +
-      $('meta[name="product-id"]').attr("content"),
+    `http://195.154.113.18:8000/api/Produits/${productId}`,
     function (response) {
       $("#productImage").attr(
         "src",
@@ -24,8 +23,7 @@ async function make() {
     }
   );
 
-  $("#loader").addClass("d-none");
-  $("body").removeClass("overflow-hidden");
+  hideLoader();
 }
 
 make();

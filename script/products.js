@@ -1,30 +1,3 @@
-const listImage = [
-  "6K4A0477_533x.jpg",
-  "6K4A0483_533x.jpg",
-  "6K4A0496_533x.jpg",
-  "6K4A0507_533x.jpg",
-  "6K4A0516_533x.jpg",
-  "6K4A0534_533x.jpg",
-  "6K4A0570_533x.jpg",
-  "6K4A0814_533x.jpg",
-  "6K4A0478_533x.jpg",
-  "6K4A0489_533x.jpg",
-  "6K4A0504_533x.jpg",
-  "6K4A0513_533x.jpg",
-  "6K4A0522_533x.jpg",
-  "6K4A0536_533x.jpg",
-  "6K4A0572_533x.jpg",
-  "6K4A0829_533x.jpg",
-  "6K4A0480_533x.jpg",
-  "6K4A0493_533x.jpg",
-  "6K4A0506_533x.jpg",
-  "6K4A0514_533x.jpg",
-  "6K4A0530_533x.jpg",
-  "6K4A0550_533x.jpg",
-  "6K4A0578_533x.jpg",
-  "AmberBottleShop_ToutBu_Bottleneck_Fort_SOL_byTiesBemelmans-64copy_533x.jpg",
-];
-
 async function getProducts() {
   await $.get("http://195.154.113.18:8000/api/Produits/", function (response) {
     const products = response;
@@ -123,7 +96,7 @@ async function makeFilter() {
       return parseFloat($(this).html());
     })
     .get();
-  console.log($(".price h6"));
+
   const minPrice = Math.floor(Math.min(...priceArray));
   const maxPrice = Math.ceil(Math.max(...priceArray));
   $("#slider-range").slider({
@@ -146,8 +119,7 @@ async function makePage() {
   await getProducer();
   await makeFilter();
 
-  $("#loader").addClass("d-none");
-  $("body").removeClass("overflow-hidden");
+  hideLoader();
 }
 
 makePage();
