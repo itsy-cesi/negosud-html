@@ -46,9 +46,7 @@
     <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
 
-    <script src="/script/product.js" defer></script>
-    <script src="/script/cart.js" defer></script>
-    <script src="/script/quantity.js" defer></script>
+    <script src="/script/account.js" defer></script>
     <style>
         .h-inherit {
             width: inherit;
@@ -90,6 +88,15 @@
                         <span
                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
                             id="">
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/account" class="m-3 nav-link position-relative">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+                            id="badgeCart">
                         </span>
                     </a>
                 </li>
@@ -135,64 +142,83 @@
             </ul>
         </nav>
     </header>
-    <div id="loader" style="width: 100vw; height: 100vh; z-index: 9;"
-        class="top-0 d-flex justify-content-center align-items-center position-absolute bg-white">
-        <img src="/d3f472b06590a25cb4372ff289d81711_w200.gif" alt="">
-    </div>
-    <section style="height: 75vh" class="d-flex justify-content-center align-items-center">
-        <div class="d-flex w-75 h-100">
-            <img src="" id="productImage" class="h-100" alt="">
-            <div class="d-flex justify-content-between flex-column p-5 h-inherit">
-                <div class="d-flex flex-column">
-                    <h5 id="productProducer"></h5>
-                    <h2 id="productName"></h2>
-                    <div class="d-flex align-items-baseline">
-                        <h2 id="productPrice"></h2>
-                        <h2>€</h2>
-                        <h5 class="ms-3" id="productTax"></h5>
-                        <h5 class="ms-2">TTC</h5>
+    <section style="height: 75vh" class="d-flex justify-content-center">
+        <div id="accountForm" class="carousel slide w-100">
+            <div class="carousel-inner">
+                <section id="loginForm" class="mx-auto carousel-item vw-100 mt-5 active">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div>
+                                <div class="card-header">
+                                    <h4 class="mb-4">Login</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form id="login-form">
+                                        <div class="form-group">
+                                            <label>Email:</label>
+                                            <input type="email" name="email" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Password:</label>
+                                            <input type="password" name="password" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block mb-3">Login</button>
+                                            <a onclick="$('#accountForm').carousel(1);">Don't
+                                                have an account ?
+                                                Register</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <h4>Quantity</h4>
-                    <div class="input-group mb-3 d-flex w-25 p-5 mt-5 pt-0">
-                        <input style="flex: 1;" type="number" name="quantity" class="form-control text-center" value="1"
-                            min="1">
+                </section>
+                <section id="registrationForm" class="mx-auto carousel-item vw-100 mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-4">Registration</h4>
+                                </div>
+                                <div class="card-body">
+                                    <form id="register-form">
+                                        <div class="form-group">
+                                            <label>Nom:</label>
+                                            <input type="text" name="nom" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Prénom:</label>
+                                            <input type="text" name="prenom" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email:</label>
+                                            <input type="email" name="email" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Téléphone:</label>
+                                            <input type="tel" name="tel" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Mot de passe:</label>
+                                            <input type="password" name="motDePasse" class="form-control" required>
+                                        </div>
+                                        <div class="form-group" id="siren-field">
+                                            <label>SIREN:</label>
+                                            <input type="text" name="siren" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                            <a onclick="$('#accountForm').carousel(0);">Already have an account ?
+                                                Login
+                                                here</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <p id="productDescription"></p>
-                    <div class="d-flex align-items-baseline">
-                        <h4 class="me-2">Year:</h4>
-                        <h4 id="productAge"></h4>
-                    </div>
-                    <div class="d-flex align-items-baseline">
-                        <h4 class="me-2">Region:</h4>
-                        <h4 id="productRegion"></h4>
-                    </div>
-                    <div class="d-flex align-items-baseline">
-                        <h4 class="me-2">Couleur:</h4>
-                        <h4 id="productColor"></h4>
-                    </div>
-                    <div class="d-flex align-items-baseline">
-                        <h4 class="me-2">Alcool:</h4>
-                        <h4 id="productAlcool"></h4>
-                        <h4 class="me-2">°</h4>
-                    </div>
-                    <div class="d-flex align-items-baseline">
-                        <h4 class="me-2">Aliments:</h4>
-                        <h4 id="productAlim"></h4>
-                    </div>
-                    <div class="d-flex align-items-baseline">
-                        <h4 class="me-2">Expiration:</h4>
-                        <h4 id="productExp"></h4>
-                    </div>
-                </div>
-                <div class="d-flex mt-3">
-                    <a id="buy-it" product-id="" class="btn btn-primary w-50 ms-5" role="button"><i
-                            class="fa fa-shopping-cart"></i>
-                        Buy</a>
-                </div>
+                </section>
             </div>
         </div>
     </section>

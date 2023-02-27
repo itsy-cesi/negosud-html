@@ -84,13 +84,13 @@
         <nav>
             <ul style="list-style: none; display:flex;">
                 <li>
-                    <a href="http://127.0.0.1/" class="p-3 nav-link">Home</a>
+                    <a href="/" class="p-3 nav-link">Home</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1/products" class="p-3 nav-link">Products</a>
+                    <a href="/products" class="p-3 nav-link">Products</a>
                 </li>
                 <li>
-                    <a href="#" class="p-3 nav-link">Contact</a>
+                    <a href="/contact" class="p-3 nav-link">Contact</a>
                 </li>
                 <li>
                     <a href="#" class="p-3 nav-link">
@@ -114,13 +114,13 @@
         <nav>
             <ul style="list-style: none; display:flex;">
                 <li>
-                    <a href="http://127.0.0.1/" class="p-3 nav-link">Home</a>
+                    <a href="/" class="p-3 nav-link">Home</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1/products" class="p-3 nav-link">Products</a>
+                    <a href="/products" class="p-3 nav-link">Products</a>
                 </li>
                 <li>
-                    <a href="#" class="p-3 nav-link">Contact</a>
+                    <a href="/contact" class="p-3 nav-link">Contact</a>
                 </li>
                 <li>
                     <a href="#" class="p-3 nav-link">
@@ -136,12 +136,21 @@
                         </span>
                     </a>
                 </li>
+                <li>
+                    <a href="/account" class="m-3 nav-link position-relative">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none"
+                            id="badgeCart">
+                        </span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
     <div id="loader" style="z-index: 1;"
         class="vw-100 vh-100 top-0 d-flex justify-content-center align-items-center position-absolute bg-white">
-        <img src="http://127.0.0.1/d3f472b06590a25cb4372ff289d81711_w200.gif" alt="">
+        <img src="/d3f472b06590a25cb4372ff289d81711_w200.gif" alt="">
     </div>
     <section class="h-100 p-5 d-flex">
         <div class="col-2 position-relative">
