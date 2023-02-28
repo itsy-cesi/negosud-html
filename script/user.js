@@ -75,14 +75,7 @@ async function make() {
               return data;
             },
           },
-          {
-            searchable: false,
-            orderable: false,
-            data: "id",
-            render: function (data, type, row) {
-              return `<a name="see" target="${data}" class="btn btn-primary" role="button">See</a>`;
-            },
-          },
+
         ],
       });
     },
@@ -111,14 +104,7 @@ async function make() {
             title: "Total",
             data: "factureTotal",
           },
-          {
-            searchable: false,
-            orderable: false,
-            data: "id",
-            render: function (data, type, row) {
-              return `<a name="see" target="${data}" class="btn btn-primary" role="button">See</a>`;
-            },
-          },
+
         ],
       });
     },

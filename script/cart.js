@@ -30,7 +30,7 @@ async function makeOffCanvas() {
             <h5 class="offcanvas-title" id="offcanvasRightLabel"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
-          <div class="offcanvas-body h-100" id="cartList">
+          <div class="offcanvas-body h-75 d-flex flex-column justify-content-between" id="cartList">
           </div>
         </div>
     `);
@@ -49,46 +49,49 @@ async function makeList(cartList) {
         </div>
       </div>
     `);
+    $('#checkout').parent().remove();
   }
+  total = 0;
+  $("#cartList").append(`<div>
+        <div id="listCheckout"></div>
+      `);
   Object.values(cartList.cart).forEach((item) => {
     product = item.product;
     quantity = item.quantity;
-    $("#cartList").append(`
-        <div class="d-flex" product-id="${product.id}">
+    $("#cartList #listCheckout").append(`
+    <div class="d-flex" product-id="${product.id}">
             <div class="w-25">
               <img src="http://127.0.0.1/wines/6K4A0480_533x.jpg" class="w-100 ratio ratio-1x1">
             </div>
             <div>
-                <h5action="delete">${
-                  product.nomProduit
-                }</h5action=><div class="d-flex">
+                <h5action="delete">${product.nomProduit
+      }</h5action=><div class="d-flex">
                 <div class="w-50 p-4">
                     <div class="input-group d-flex mt-3">
-                        <input style="flex: 1;" type="number" name="quantity" offcanvas="true" class="form-control text-center" value="${quantity}" product-id="${
-      product.id
-    }">
+                        <input style="flex: 1;" type="number" name="quantity" offcanvas="true" class="form-control text-center" value="${quantity}" product-id="${product.id
+      }">
                     </div>
                     <div>
-                        <a class="btn btn-danger" product-id="${
-                          product.id
-                        }" action="delete" name="quantity"><i class="fa fa-trash" aria-hidden="true"></i> Delete item</a>
+                        <a class="btn btn-danger" product-id="${product.id
+      }" action="delete" name="quantity"><i class="fa fa-trash" aria-hidden="true"></i> Delete item</a>
                     </div>
                 </div>
                 <div class="d-flex flex-column">
                     <h5>Unit: ${product.prix_unitaire}€</h5>
-                    <h5>Total: ${
-                      Math.round(product.prix_unitaire * quantity * 100) / 100
-                    }€</h5>
+                    <h5>Total: <span name="prixTotalProduit">${Math.round(product.prix_unitaire * quantity * 100) / 100
+      }</span>€</h5>
                 </div>
             </div>
         </div>
         `);
-    $("#cartList").append(`
-        <div class="w-100 d-flex justify-content-center">
-                    <a id="checkout" class="btn btn-primary">Checkout</a>
-        </div>
-        `);
+    total += (product.prix_unitaire * quantity);
   });
+  $("#cartList").append(`
+          <div class="w-100 d-flex justify-content-between p-3">
+                      <a id="checkout" class="btn btn-primary">Checkout</a>
+                      <div id="TOTAL">Price: ${Math.round(total * 100) / 100}€</div>
+          </div>
+          `);
 }
 
 async function clearCart() {
@@ -207,16 +210,5 @@ $(document).on("click", "#checkout", async function (e) {
 
   if (token == null) return;
 
-  $.ajax({
-    url: "/api/checkout.php",
-    type: "POST",
-    data: {
-      products: $(".offcanvas div[product-id]")
-        .map(function () {
-          return $(this).attr("product-id");
-        })
-        .get(),
-    },
-    success: function () {},
-  });
+  document.location = "/checkout";
 });

@@ -4,7 +4,6 @@
 <head>
     <?=!require('./cdn.php') ?>
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <script src="/script/cart.js" defer></script>
     <script src="/script/loader.js" defer></script>
     <script src="/script/products.js" defer></script>
     <script src="/script/quantity.js" defer></script>

@@ -3,7 +3,6 @@
 
 <head>
     <?=!require('./cdn.php') ?>
-    <script src="/script/cart.js" defer></script>
     <script src="/script/loader.js" defer></script>
     <script src="/script/product.js" defer></script>
     <script src="/script/quantity.js" defer></script>
@@ -31,7 +30,7 @@
                 </div>
                 <div>
                     <h4>Quantity</h4>
-                    <div class="input-group mb-3 d-flex w-25 p-5 mt-5 pt-0">
+                    <div class="input-group mb-3 d-flex p-5 mt-5 pt-0">
                         <input style="flex: 1;" type="number" name="quantity" class="form-control text-center" value="1"
                             min="1">
                     </div>
